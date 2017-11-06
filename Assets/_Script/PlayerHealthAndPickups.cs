@@ -12,9 +12,16 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 	public GameObject starCountText;
 	public GameObject livesCountText;
 
+	//Creates a Singleton, something that other pieces of code can reference 
+	//to change values in this script
+	public static PlayerHealthAndPickups Instance;
 
 	// Use this for initialization
 	void Start () {
+
+		//Initializes the Singleton
+		Instance = this;
+
 		power = 8;
 	}
 	
@@ -26,6 +33,11 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 
 		//Updates the onscreen stars counter
 		starCountText.GetComponent<Text>().text = "Stars x " + stars;
+
+		//Checks to see if the player has died
+		if (power == 0) {
+			Debug.Log ("You died!");
+		}
 
 	}
 
