@@ -26,5 +26,28 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 
 		//Updates the onscreen stars counter
 		starCountText.GetComponent<Text>().text = "Stars x " + stars;
+
+	}
+
+	void OnCollisionEnter(Collision col) {
+
+		//Checks to see if the player has collected the star
+		if (col.gameObject.name == "Star") {
+			stars++;
+			GameObject.Destroy (col.gameObject);
+			Debug.Log ("You win!");
+		}
+
+		//Checks to see if the player has collected a coin
+		if (col.gameObject.name == "Coin") {
+
+			if (power > 8) {
+				power++;
+			}
+
+			Debug.Log ("Power: " + power);
+
+			GameObject.Destroy (col.gameObject);
+		}
 	}
 }
