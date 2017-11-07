@@ -14,7 +14,7 @@ public class DamageSourceScript : MonoBehaviour {
 		
 	}
 
-	void OnCollisionEnter(Collision col) {
+	void OnTriggerEnter(Collider col) {
 
 		//Makes sure that it is the player that this object has collided with
 		if (col.gameObject.name == "Player") {

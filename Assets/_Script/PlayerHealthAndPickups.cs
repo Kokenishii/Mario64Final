@@ -60,7 +60,7 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 			Debug.Log ("You died!");
 
 			//Reloads the level (the current number of lives will carry over)
-			SceneManager.LoadScene ("Nick's Systems Test Scene");
+			SceneManager.LoadScene ("WhompFortress");
 		}
 
 		//Checks to see if the player has lost all their lives
@@ -69,8 +69,8 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter(Collision col) {
-
+	void OnTriggerEnter(Collider col) {
+        print("collide");
 		//Checks to see if the player has collected the star
 		if (col.gameObject.name == "Star") {
 			stars++;
