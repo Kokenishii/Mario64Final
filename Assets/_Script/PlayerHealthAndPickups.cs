@@ -36,19 +36,19 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 	void Update () {
 
 		//Updates the onscreen lives counter
-		livesCountText.GetComponent<Text>().text = "Lives x " + lives; // TODO: add ".ToString()" on lives
+		livesCountText.GetComponent<Text>().text = "Lives x " + lives.ToString(); 
 
 		//Updates the coin score counter
-		coinCountText.GetComponent<Text>().text = "Coins x " + coinScore; // TODO: add ".ToString()" on coinScore
+		coinCountText.GetComponent<Text>().text = "Coins x " + coinScore.ToString();
 
 		//Updates the onscreen stars counter
-		starCountText.GetComponent<Text>().text = "Stars x " + stars; // TODO: add ".ToString()" on stars
+		starCountText.GetComponent<Text>().text = "Stars x " + stars.ToString();
 
 		//Checks to see if the player's power is less than maximum and
 		//if the power meter should appear onscreen
 		if (power < 8) {
 			powerMeter.SetActive (true);
-			powerMeter.GetComponent<Text>().text = "Power: " + power; // TODO: add ".ToString()" on power
+			powerMeter.GetComponent<Text>().text = "Power: " + power.ToString();
 		} else {
 			powerMeter.SetActive (false);
 		}
@@ -73,14 +73,14 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 	void OnTriggerEnter(Collider col) {
         print("collide");
 		//Checks to see if the player has collected the star
-		if (col.gameObject.name == "Star") { // TODO: use tags instead of gameObject.name, this is dangerous
+		if (col.gameObject.tag == "Star") {
 			stars++;
-			Destroy (col.gameObject); // TODO: "GameObject.Destroy" can be simplified to "Destroy"
+			Destroy (col.gameObject);
 			Debug.Log ("You win!");
 		}
 
 		//Checks to see if the player has collected a regular coin
-		if (col.gameObject.name == "Coin") { // TODO: use tags instead of gameObject.name, this is dangerous... like, what if the gameobject was named "Coin (Clone)" or "Coin (2)"?
+		if (col.gameObject.tag == "Coin") {
 
 			coinScore++;
 
@@ -90,23 +90,23 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 
 			Debug.Log ("Power: " + power);
 
-			GameObject.Destroy (col.gameObject); // TODO: "GameObject.Destroy" can be simplified to "Destroy"
+			Destroy (col.gameObject);
 		}
 
 		//Checks to see if the player has collected a red coin
-		if (col.gameObject.name == "Red Coin") { // TODO: use tags instead of gameObject.name, this is dangerous
+		if (col.gameObject.tag == "Red Coin") {
 
 			coinScore += 2;
 
 			if (power < 8) {
-				power++;	//NOTE: Do red coins add more power than that?
+				power += 2;
 			}
 
 			redCoinCount++;
 
 			Debug.Log("Red Coins Collected: " + redCoinCount);
 
-			GameObject.Destroy (col.gameObject); // TODO: "GameObject.Destroy" can be simplified to "Destroy"
+			Destroy (col.gameObject);
 	}
 }
 }
