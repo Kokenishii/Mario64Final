@@ -437,6 +437,11 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: -0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114318052333654900, guid: ef52210fc0c45489091e232cea7b31cb,
+        type: 2}
+      propertyPath: defaultZoom
+      value: 
+      objectReference: {fileID: 1465153628}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ef52210fc0c45489091e232cea7b31cb, type: 2}
   m_IsPrefabParent: 0
@@ -3207,6 +3212,37 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114199259761769010, guid: f6ad193a04d324b619c4c5325e6fb9bf,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ade12e6ad2f94452ca54026e816611e7,
+        type: 3}
+    - target: {fileID: 114637595950906696, guid: f6ad193a04d324b619c4c5325e6fb9bf,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ade12e6ad2f94452ca54026e816611e7,
+        type: 3}
+    - target: {fileID: 114060919439371344, guid: f6ad193a04d324b619c4c5325e6fb9bf,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ade12e6ad2f94452ca54026e816611e7,
+        type: 3}
+    - target: {fileID: 114280568044425470, guid: f6ad193a04d324b619c4c5325e6fb9bf,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ade12e6ad2f94452ca54026e816611e7,
+        type: 3}
+    - target: {fileID: 114280568044425470, guid: f6ad193a04d324b619c4c5325e6fb9bf,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Lives x 3
+
+'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6ad193a04d324b619c4c5325e6fb9bf, type: 2}
   m_IsPrefabParent: 0
@@ -3887,6 +3923,11 @@ GameObject:
   m_PrefabParentObject: {fileID: 1468660536125790, guid: f6ad193a04d324b619c4c5325e6fb9bf,
     type: 2}
   m_PrefabInternal: {fileID: 1162359064}
+--- !u!1 &1465153628 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1244058912986138, guid: ef52210fc0c45489091e232cea7b31cb,
+    type: 2}
+  m_PrefabInternal: {fileID: 83225933}
 --- !u!1 &1537879425
 GameObject:
   m_ObjectHideFlags: 0
