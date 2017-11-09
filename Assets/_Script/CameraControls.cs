@@ -58,15 +58,17 @@ public class CameraControls : MonoBehaviour {
        }
 
          //roate to the left along mario 90 degrees
-            if(Input.GetKeyDown(KeyCode.Alpha3))
+            if(Input.GetKey(KeyCode.Alpha3))
             {
-            transform.SetPositionAndRotation(leftSide.transform.position, leftSide.transform.rotation);
+            transform.RotateAround(mario.transform.position, new Vector3(0, 90, 0), 5f);
+            //transform.SetPositionAndRotation(leftSide.transform.position, leftSide.transform.rotation);
             }
 
         //rotate to the right along mario 90 degrees
-            if(Input.GetKeyDown(KeyCode.Alpha4))
+            if(Input.GetKey(KeyCode.Alpha4))
             {
-            transform.SetPositionAndRotation(rightSide.transform.position, rightSide.transform.rotation);
+            transform.RotateAround(mario.transform.position, new Vector3(0, 90, 0), -5f);
+            //transform.SetPositionAndRotation(rightSide.transform.position, rightSide.transform.rotation);
             }
 
 	}
