@@ -36,19 +36,19 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 	void Update () {
 
 		//Updates the onscreen lives counter
-		livesCountText.GetComponent<Text>().text = "Lives x " + lives;
+		livesCountText.GetComponent<Text>().text = "Lives x " + lives.ToString(); 
 
 		//Updates the coin score counter
-		coinCountText.GetComponent<Text>().text = "Coins x " + coinScore;
+		coinCountText.GetComponent<Text>().text = "Coins x " + coinScore.ToString();
 
 		//Updates the onscreen stars counter
-		starCountText.GetComponent<Text>().text = "Stars x " + stars;
+		starCountText.GetComponent<Text>().text = "Stars x " + stars.ToString();
 
 		//Checks to see if the player's power is less than maximum and
 		//if the power meter should appear onscreen
 		if (power < 8) {
 			powerMeter.SetActive (true);
-			powerMeter.GetComponent<Text>().text = "Power: " + power;
+			powerMeter.GetComponent<Text>().text = "Power: " + power.ToString();
 		} else {
 			powerMeter.SetActive (false);
 		}
@@ -66,20 +66,21 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 		//Checks to see if the player has lost all their lives
 		if (lives < 0) {
 			Debug.Log ("Game over!");
+			// TODO: write code to actually handle this, and end the game?
 		}
 	}
 
 	void OnTriggerEnter(Collider col) {
         print("collide");
 		//Checks to see if the player has collected the star
-		if (col.gameObject.name == "Star") {
+		if (col.gameObject.tag == "Star") {
 			stars++;
-			GameObject.Destroy (col.gameObject);
+			Destroy (col.gameObject);
 			Debug.Log ("You win!");
 		}
 
 		//Checks to see if the player has collected a regular coin
-		if (col.gameObject.name == "Coin") {
+		if (col.gameObject.tag == "Coin") {
 
 			coinScore++;
 
@@ -89,23 +90,23 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 
 			Debug.Log ("Power: " + power);
 
-			GameObject.Destroy (col.gameObject);
+			Destroy (col.gameObject);
 		}
 
 		//Checks to see if the player has collected a red coin
-		if (col.gameObject.name == "Red Coin") {
+		if (col.gameObject.tag == "Red Coin") {
 
 			coinScore += 2;
 
 			if (power < 8) {
-				power++;	//NOTE: Do red coins add more power than that?
+				power += 2;
 			}
 
 			redCoinCount++;
 
 			Debug.Log("Red Coins Collected: " + redCoinCount);
 
-			GameObject.Destroy (col.gameObject);
+			Destroy (col.gameObject);
 	}
 }
 }
