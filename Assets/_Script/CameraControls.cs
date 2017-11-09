@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraControls : MonoBehaviour {
     	//make a control scheme for the camera such that you can:
     	//zoom the camera in and out from mario
-    	//rotate the camera 90 degrees along mario
+    	//rotate the camera freely degrees along mario
     	//make mario unable to move and then you can move the camera around freely?
 	// Use this for initialization
     public GameObject mario;
@@ -13,7 +13,7 @@ public class CameraControls : MonoBehaviour {
     public GameObject zoomOut;
     public GameObject leftSide;
     public GameObject rightSide;
-    public GameObject defualtZoom; // YOU SHOULD FIX THIS VARIABLE NAME... right-click on it in MonoDevelop, and select Refactor > Rename
+    public GameObject defaultZoom; 
     int zoomDistance = 0;
 
 
@@ -32,7 +32,7 @@ public class CameraControls : MonoBehaviour {
 		    }
 		    else
 		    {
-			transform.SetPositionAndRotation(defualtZoom.transform.position, defualtZoom.transform.rotation);
+			transform.SetPositionAndRotation(defaultZoom.transform.position, defaultZoom.transform.rotation);
 			zoomDistance = 0;
 		    }
 		}
@@ -47,25 +47,25 @@ public class CameraControls : MonoBehaviour {
             }
                     else
                     {
-                        transform.SetPositionAndRotation(defualtZoom.transform.position, defualtZoom.transform.rotation);
+                        transform.SetPositionAndRotation(defaultZoom.transform.position, defaultZoom.transform.rotation);
                         zoomDistance = 0;
                     }
 
        }
 
-         //roate to the left along mario 90 degrees
+        //rotate around mario freely
             if(Input.GetKey(KeyCode.Alpha3))
             {
-		    // TODO: make this framerate independent, and btw, this doesn't actually rotate 90 degrees
-		    // also, the 2nd parameter defines an axis, not in degrees, see https://docs.unity3d.com/ScriptReference/Transform.RotateAround.html
-            	transform.RotateAround(mario.transform.position, Vector3.up, 5f); 
+		    
+		   
+            transform.RotateAround(mario.transform.position, Vector3.up, 150f * Time.deltaTime); 
             	//transform.SetPositionAndRotation(leftSide.transform.position, leftSide.transform.rotation);
             }
 
-        //rotate to the right along mario 90 degrees
+        //rotate around mario freely the other way
             if(Input.GetKey(KeyCode.Alpha4))
             {
-            	transform.RotateAround(mario.transform.position, Vector3.up, -5f);
+            transform.RotateAround(mario.transform.position, Vector3.up, -150f * Time.deltaTime);
             	//transform.SetPositionAndRotation(rightSide.transform.position, rightSide.transform.rotation);
             }
 
