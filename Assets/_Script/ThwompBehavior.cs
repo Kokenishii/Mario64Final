@@ -12,9 +12,10 @@ public class ThwompBehavior : MonoBehaviour {
 	//The two different states a Thwomp can inhabit
 	public enum ThwompState
 	{
-		waiting,	//0
+		waitingToFall,	//0
 		falling,	//1
-		rising		//2
+		waitingToRise,	//2
+		rising		//3
 	}
 
 	public ThwompState currentState;
@@ -39,7 +40,7 @@ public class ThwompBehavior : MonoBehaviour {
 		//Records the Thwomp's start position
 		startPosition = this.transform.position;
 
-		currentState = ThwompState.waiting;
+		currentState = ThwompState.waitingToFall;
 
 		timer = 0f;
 	}
@@ -49,7 +50,10 @@ public class ThwompBehavior : MonoBehaviour {
 
 
 		//If the Thwomp is wating to drop
-		if (currentState == ThwompState.waiting) {
+		if (currentState == ThwompState.waitingToFall) {
+
+			//Resets the Thwomp to it's starting position
+			//this.GetComponent<Transform> ().position = startPosition;
 
 			//Ticks up the timer
 			timer += Time.deltaTime;
@@ -81,7 +85,7 @@ public class ThwompBehavior : MonoBehaviour {
 
 			//Returns the Thwomp to waiting mode if it returns to it's original position
 			if (this.transform.position.y >= startPosition.y) {
-				currentState = ThwompState.waiting;
+				currentState = ThwompState.waitingToFall;
 			}
 
 			Debug.Log ("Rising.");
@@ -91,13 +95,17 @@ public class ThwompBehavior : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col) {
 
-		Debug.Log ("Collision!!!");
+		Debug.Log ("Collided with " + col.gameObject.name);
 
 		//Returns the Thwomp to a rising state if it lands on something that isn't the player
 		if (col.gameObject.tag != "Player"
 			&& currentState == ThwompState.falling) {
 
-			currentState = ThwompState.rising;
+			//Makes sure the Thwomp isn't just colliding with itself
+			if (col.gameObject.tag != "Thwomp") {
+
+				currentState = ThwompState.rising;
+			}
 		}
 	}
 }
