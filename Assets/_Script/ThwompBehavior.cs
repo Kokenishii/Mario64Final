@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//This script is attached to Thwomps to make them do what they do
+//This script is attached to Thwomps to make them hover in place,
+//periodically descend, and then rise back to their starting position
 public class ThwompBehavior : MonoBehaviour {
+
+	//The character controller used to regulate the Thwomp's movement
+	CharacterController thwompCharacterController;
 
 	//The two different states a Thwomp can inhabit
 	public enum ThwompState
@@ -28,8 +32,10 @@ public class ThwompBehavior : MonoBehaviour {
 	//The speed at which the Thwomp rises, determined in the inspector
 	public float risingSpeed;
 
+
 	void Start () {
-	
+		thwompCharacterController = this.GetComponent<CharacterController>();
+
 		//Records the Thwomp's start position
 		startPosition = this.transform.position;
 
@@ -39,6 +45,8 @@ public class ThwompBehavior : MonoBehaviour {
 	}
 
 	void Update () {
+
+
 
 		//If the Thwomp is wating to drop
 		if (currentState == ThwompState.waiting) {
@@ -61,7 +69,7 @@ public class ThwompBehavior : MonoBehaviour {
 		if (currentState == ThwompState.falling) {
 
 			//Moves the Thwomp downward
-			this.transform.Translate (Vector3.down * dropSpeed * Time.deltaTime);
+			thwompCharacterController.Move (Vector3.down * dropSpeed * Time.deltaTime);
 
 			Debug.Log ("Falling!");
 		}
@@ -69,7 +77,7 @@ public class ThwompBehavior : MonoBehaviour {
 		if (currentState == ThwompState.rising) {
 
 			//Moves the Thwomp upward
-			this.transform.Translate (Vector3.up * risingSpeed * Time.deltaTime);
+			thwompCharacterController.Move (Vector3.up * risingSpeed * Time.deltaTime);
 
 			//Returns the Thwomp to waiting mode if it returns to it's original position
 			if (this.transform.position.y >= startPosition.y) {
@@ -77,6 +85,19 @@ public class ThwompBehavior : MonoBehaviour {
 			}
 
 			Debug.Log ("Rising.");
+		}
+	}
+
+
+	void OnCollisionEnter(Collision col) {
+
+		Debug.Log ("Collision!!!");
+
+		//Returns the Thwomp to a rising state if it lands on something that isn't the player
+		if (col.gameObject.tag != "Player"
+			&& currentState == ThwompState.falling) {
+
+			currentState = ThwompState.rising;
 		}
 	}
 }
