@@ -25,8 +25,10 @@ public class ThwompBehavior : MonoBehaviour {
 
 	//Counts the time until a Thwomp falls
 	float timer;
-	//Determines how long a Thwomp should hang in place, determined in the inspector
+	//Determines how long a Thwomp should hang in the air before falling, determined in the inspector
 	public float secondsToDrop;
+	//Determines how long a Thwomp should rest on the ground before rising, determined in the inspector
+	public float secondsToRise;
 
 	//The speed at which the Thwomp falls, determined in the inspector
 	public float dropSpeed;
@@ -46,8 +48,6 @@ public class ThwompBehavior : MonoBehaviour {
 	}
 
 	void Update () {
-
-
 
 		//If the Thwomp is wating to drop
 		if (currentState == ThwompState.waitingToFall) {
@@ -78,6 +78,24 @@ public class ThwompBehavior : MonoBehaviour {
 			Debug.Log ("Falling!");
 		}
 
+		//If the Thwomp is wating to rise
+		if (currentState == ThwompState.waitingToRise) {
+
+			//Ticks up the timer
+			timer += Time.deltaTime;
+
+			//Checks if it's time to rise back up yet
+			if (timer >= secondsToRise) {
+
+				//Resets the timer for the next drop
+				timer = 0f;
+
+				currentState = ThwompState.rising;
+			}
+
+			Debug.Log ("Waiting to rise.");
+		}
+
 		if (currentState == ThwompState.rising) {
 
 			//Moves the Thwomp upward
@@ -92,7 +110,7 @@ public class ThwompBehavior : MonoBehaviour {
 		}
 	}
 
-
+	//Detects if the Thwomp has crashed down on something
 	void OnCollisionEnter(Collision col) {
 
 		Debug.Log ("Collided with " + col.gameObject.name);
@@ -104,7 +122,7 @@ public class ThwompBehavior : MonoBehaviour {
 			//Makes sure the Thwomp isn't just colliding with itself
 			if (col.gameObject.tag != "Thwomp") {
 
-				currentState = ThwompState.rising;
+				currentState = ThwompState.waitingToRise;
 			}
 		}
 	}
