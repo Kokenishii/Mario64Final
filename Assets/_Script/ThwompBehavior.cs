@@ -9,7 +9,7 @@ public class ThwompBehavior : MonoBehaviour {
 	//The character controller used to regulate the Thwomp's movement
 	CharacterController thwompCharacterController;
 
-	//The two different states a Thwomp can inhabit
+	//The different states a Thwomp can inhabit
 	public enum ThwompState
 	{
 		waitingToFall,	//0
