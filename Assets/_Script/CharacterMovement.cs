@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour {
+   
     //Problem Lists:
     //1. Crouching Lerp(Slow down instead of stopping suddenly) Lerp is not working well
     //2. If you keep pressing crouch, jump and jump again, it's not working. Because
@@ -18,7 +19,7 @@ public class CharacterMovement : MonoBehaviour {
    public float crouchSpeed;
     public float crouchJumpHeight;
     public float crouchJumpDistance;
-
+    public GameObject myCamera;
 	void Start () {
 		
 	}
@@ -33,12 +34,17 @@ public class CharacterMovement : MonoBehaviour {
         vertical = Input.GetAxis("Vertical");
 
         //create vector3 movement for CharacterController.Move
-        Vector3 movement = new Vector3(horizontal, jumpSpeed, vertical);
-
+        //Using forward and rightward of camera to treat vertical and horizontal axis first
+        Vector3 forwardMovement = Camera.main.transform.forward * vertical;
+        Vector3 rightMovement = Camera.main.transform.right * horizontal;
+        Vector3 movement = forwardMovement + rightMovement;
+        movement.y = jumpSpeed;
+     
+        transform.forward = Vector3.Lerp(transform.forward, new Vector3(movement.x, 0, movement.z), 0.9f);
         //roate the character to wherever it is facing
-        transform.forward = Vector3.Lerp(transform.forward, new Vector3(horizontal,0,vertical), 0.9f);
-    
-   
+
+
+
         if (myCharacterController.isGrounded)
         {
             //jumpSpeed -= gravity * Time.deltaTime;
@@ -78,7 +84,6 @@ public class CharacterMovement : MonoBehaviour {
         }
 
         //I still need to adjust how jumpspeed is applied
-
 
 
         myCharacterController.Move(movement*moveSpeed*Time.deltaTime);
