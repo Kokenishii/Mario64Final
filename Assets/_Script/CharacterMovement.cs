@@ -37,18 +37,6 @@ public class CharacterMovement : MonoBehaviour {
 
         //roate the character to wherever it is facing
         transform.forward = Vector3.Lerp(transform.forward, new Vector3(horizontal,0,vertical), 0.9f);
-
-        //if (horizontal != 0f || vertical != 0f)
-        //{
-        //    if(Input.GetKey(KeyCode.LeftShift))
-        //    {
-        //        print("crouch");
-        //        movement = Vector3.Lerp(movement, new Vector3(0,movement.y,0), 0.5f);
-        //        horizontal = 0;
-        //        vertical = 0;
-        //    }
-        //}
-        
     
    
         if (myCharacterController.isGrounded)
