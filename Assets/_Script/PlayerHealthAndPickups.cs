@@ -18,6 +18,9 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 	public GameObject coinCountText;
 	public GameObject livesCountText;
 	public GameObject powerMeter;
+    public Sprite[] powerMeterImages = new Sprite[9];
+    public GameObject powerSprite;
+   
 
 	//Creates a Singleton, something that other pieces of code can reference 
 	//to change values in this script
@@ -30,11 +33,17 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 		Instance = this;
 
 		power = 8;
+
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+        if (power > 8)
+        {
+            power = 8;
+        }
+        Healthbar();
 		//Updates the onscreen lives counter
 		livesCountText.GetComponent<Text>().text = "Lives x " + lives.ToString(); 
 
@@ -48,9 +57,12 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 		//if the power meter should appear onscreen
 		if (power < 8) {
 			powerMeter.SetActive (true);
+            powerSprite.SetActive(true);
 			powerMeter.GetComponent<Text>().text = "Power: " + power.ToString();
+
 		} else {
 			powerMeter.SetActive (false);
+            powerSprite.SetActive(false);
 		}
 
 		//Checks to see if the player has died
@@ -109,4 +121,10 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 			Destroy (col.gameObject);
 	}
 }
+    void Healthbar(){
+        Image health;
+        health = powerSprite.GetComponent<Image>();
+        health.sprite = powerMeterImages[power];
+
+    }
 }
