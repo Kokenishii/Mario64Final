@@ -4,7 +4,8 @@ using UnityEngine;
 
 //This script is attached to Thwomps to make them hover in place,
 //periodically descend, and then rise back to their starting position
-public class ThwompBehavior : MonoBehaviour {
+public class ThwompBehavior : MonoBehaviour
+{
 
 	//The character controller used to regulate the Thwomp's movement
 	CharacterController thwompCharacterController;
@@ -12,10 +13,14 @@ public class ThwompBehavior : MonoBehaviour {
 	//The different states a Thwomp can inhabit
 	public enum ThwompState
 	{
-		waitingToFall,	//0
-		falling,	//1
-		waitingToRise,	//2
-		rising		//3
+		waitingToFall,
+		//0
+		falling,
+		//1
+		waitingToRise,
+		//2
+		rising
+		//3
 	}
 
 	public ThwompState currentState;
@@ -35,9 +40,12 @@ public class ThwompBehavior : MonoBehaviour {
 	//The speed at which the Thwomp rises, determined in the inspector
 	public float risingSpeed;
 
+	//Tells whether or not the Thwomp has done damage to the player on this cycle of it's motion
+	bool didDamage = false;
 
-	void Start () {
-		thwompCharacterController = this.GetComponent<CharacterController>();
+	void Start ()
+	{
+		thwompCharacterController = this.GetComponent<CharacterController> ();
 
 		//Records the Thwomp's start position
 		startPosition = this.transform.position;
@@ -47,13 +55,18 @@ public class ThwompBehavior : MonoBehaviour {
 		timer = 0f;
 	}
 
-	void Update () {
+	void Update ()
+	{
+
 
 		//If the Thwomp is wating to drop
 		if (currentState == ThwompState.waitingToFall) {
 
+			//Tells the script that it's okay for the Thwomp to do damage to the player again
+			didDamage = false;
+
 			//Resets the Thwomp to it's starting position
-			//this.GetComponent<Transform> ().position = startPosition;
+			this.GetComponent<Transform> ().position = startPosition;
 
 			//Ticks up the timer
 			timer += Time.deltaTime;
@@ -74,6 +87,11 @@ public class ThwompBehavior : MonoBehaviour {
 
 			//Moves the Thwomp downward
 			thwompCharacterController.Move (Vector3.down * dropSpeed * Time.deltaTime);
+
+			Vector3 currentPos = this.transform.position;
+
+			//Checks if the Thwomp is still moving or if it has run into something
+			StartCoroutine (CheckIfMoving ());
 
 			Debug.Log ("Falling!");
 		}
@@ -109,20 +127,51 @@ public class ThwompBehavior : MonoBehaviour {
 			Debug.Log ("Rising.");
 		}
 	}
+		
 
-	//Detects if the Thwomp has crashed down on something
-	void OnCollisionEnter(Collision col) {
 
-		Debug.Log ("Collided with " + col.gameObject.name);
 
-		//Returns the Thwomp to a rising state if it lands on something that isn't the player
-		if (col.gameObject.tag != "Player"
-			&& currentState == ThwompState.falling) {
 
-			//Makes sure the Thwomp isn't just colliding with itself
-			if (col.gameObject.tag != "Thwomp") {
+	//This coroutine helps determine if the Thwomp has run into something
+	//(as an alternative to OnCollisionEnter(), which was giving me (Nick) some problems)
+	IEnumerator CheckIfMoving ()
+	{
 
-				currentState = ThwompState.waitingToRise;
+		//Saves the current position of the Thwomp
+		Vector3 currentPos = this.transform.position;
+
+		//Waits a frame
+		yield return 0;
+
+		//Checks to see if the Thwomp is in the same position as it was a frame ago
+		if (currentPos == this.transform.position) {
+
+			//Tells the Thwomp to stop moving and to prepare to rise again
+			currentState = ThwompState.waitingToRise;
+		}
+
+	}
+
+
+
+
+
+	void OnTriggerEnter (Collider col)
+	{
+
+
+		//Makes sure that it is the player that this object has collided with
+		if (col.gameObject.tag == "Player") {
+
+			//Checks to make sure the Thwomp hasn't already damaged the player in this cycle of it's movement.
+			//Prevents it from dealing damage on every frame of collision.
+			if (didDamage == false) {
+			
+				//Does three points of damage to the player
+				PlayerHealthAndPickups.Instance.power -= 3;
+
+				//Ensures that this Thwomp can't damage the player again until it falls another time
+				didDamage = true;
 			}
 		}
 	}

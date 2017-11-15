@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 114629429057220782}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -229,10 +229,11 @@ MonoBehaviour:
   horizontal: 0
   vertical: 0
   gravity: 10
-  jumpForce: 2
+  jumpForce: 2.5
   crouchSpeed: 1
   crouchJumpHeight: 2
   crouchJumpDistance: 3
+  myCamera: {fileID: 0}
 --- !u!136 &136153191890388522
 CapsuleCollider:
   m_ObjectHideFlags: 1

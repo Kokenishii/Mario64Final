@@ -13,6 +13,7 @@ public class PiranhaPlantBehavior : MonoBehaviour {
 
 	public PiranhaPlantState currentState;
 
+
 	// Use this for initialization
 	void Start () {
 
@@ -30,13 +31,17 @@ public class PiranhaPlantBehavior : MonoBehaviour {
 
 		//The state of the Piranha when it has not detected the player
 		if (currentState == PiranhaPlantState.attacking) {
-		
+
+			//Reduces player health by three
+			PlayerHealthAndPickups.Instance.power -= 3;
 		}
 	}
 
 	//Checks to see if something, potentially the player, has entered the Piranha Plant's
 	//detection zone
 	void OnCollisionEnter(Collision col) {
+
+		Debug.Log ("Collide");
 
 		//If the object is a player, the Piranha Plant will attack
 		if (col.gameObject.tag == "Player") {
