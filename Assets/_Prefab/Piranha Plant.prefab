@@ -296,7 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   piranhaPlantHead: {fileID: 1458755918155200}
-  distanceToWakeUp: 4
+  distanceToWakeUp: 3
   speedToWakeUp: 1
 --- !u!135 &135994746281046250
 SphereCollider:
