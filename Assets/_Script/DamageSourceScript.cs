@@ -17,7 +17,7 @@ public class DamageSourceScript : MonoBehaviour {
 	void OnTriggerEnter(Collider col) {
 
 		//Makes sure that it is the player that this object has collided with
-		if (col.gameObject.name == "Player") {
+		if (col.gameObject.tag == "Player") {
 
 			PlayerHealthAndPickups.Instance.power--;
 			Debug.Log ("Power: " + PlayerHealthAndPickups.Instance.power);
