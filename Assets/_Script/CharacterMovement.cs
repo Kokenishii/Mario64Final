@@ -38,7 +38,7 @@ public class CharacterMovement : MonoBehaviour {
         Vector3 forwardMovement = Camera.main.transform.forward * vertical;
         Vector3 rightMovement = Camera.main.transform.right * horizontal;
         Vector3 movement = forwardMovement + rightMovement;
-        movement.y = jumpSpeed;
+
      
         transform.forward = Vector3.Lerp(transform.forward, new Vector3(movement.x, 0, movement.z), 0.7f);
         //roate the character to wherever it is facing
@@ -65,8 +65,7 @@ public class CharacterMovement : MonoBehaviour {
                 }
 
             }
-            else
-            {
+           
 
                 if (Input.GetButtonDown("Jump"))
                 {
@@ -74,18 +73,18 @@ public class CharacterMovement : MonoBehaviour {
                     
                 }
 
-            }
+            
            
         }
         else
+        //If jump is not grounded,keep adding gravity to jumpspeed
         {
             
             jumpSpeed -= gravity * Time.deltaTime;
         }
 
-        //I still need to adjust how jumpspeed is applied
-
-
+        //movement.y equals jumpspeed, which takes into gravity/jumping/high jumping, etc
+        movement.y = jumpSpeed;
         myCharacterController.Move(movement*moveSpeed*Time.deltaTime);
 
         //if(Input.GetKey(KeyCode.W))
