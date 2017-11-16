@@ -40,7 +40,7 @@ public class CharacterMovement : MonoBehaviour {
         Vector3 movement = forwardMovement + rightMovement;
         movement.y = jumpSpeed;
      
-        transform.forward = Vector3.Lerp(transform.forward, new Vector3(movement.x, 0, movement.z), 0.9f);
+        transform.forward = Vector3.Lerp(transform.forward, new Vector3(movement.x, 0, movement.z), 0.7f);
         //roate the character to wherever it is facing
 
 
