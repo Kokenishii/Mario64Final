@@ -384,7 +384,7 @@ Transform:
   m_GameObject: {fileID: 408888297}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.597453, y: 2.5974517, z: 2.5974517}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -511,31 +511,6 @@ Prefab:
       value: 
       objectReference: {fileID: 1832798312}
     - target: {fileID: 114629429057220782, guid: e480b9f4dd229429f827e9c1783eabf3,
-        type: 2}
-      propertyPath: powerSprite
-      value: 
-      objectReference: {fileID: 1513174389}
-    - target: {fileID: 114310398124315960, guid: e480b9f4dd229429f827e9c1783eabf3,
-        type: 2}
-      propertyPath: starCountText
-      value: 
-      objectReference: {fileID: 777172293}
-    - target: {fileID: 114310398124315960, guid: e480b9f4dd229429f827e9c1783eabf3,
-        type: 2}
-      propertyPath: coinCountText
-      value: 
-      objectReference: {fileID: 310630599}
-    - target: {fileID: 114310398124315960, guid: e480b9f4dd229429f827e9c1783eabf3,
-        type: 2}
-      propertyPath: livesCountText
-      value: 
-      objectReference: {fileID: 1471595485}
-    - target: {fileID: 114310398124315960, guid: e480b9f4dd229429f827e9c1783eabf3,
-        type: 2}
-      propertyPath: powerMeter
-      value: 
-      objectReference: {fileID: 1832798312}
-    - target: {fileID: 114310398124315960, guid: e480b9f4dd229429f827e9c1783eabf3,
         type: 2}
       propertyPath: powerSprite
       value: 
@@ -783,6 +758,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114157677193997190, guid: cebc430f3e46b4141af72c2a5701daa4,
+        type: 2}
+      propertyPath: distanceToWakeUp
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114157677193997190, guid: cebc430f3e46b4141af72c2a5701daa4,
+        type: 2}
+      propertyPath: distanceToSleep
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cebc430f3e46b4141af72c2a5701daa4, type: 2}
   m_IsPrefabParent: 0
@@ -837,7 +822,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1329046931147332, guid: 5d0d6c9a9f7a79a48b948e666d29657d, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d0d6c9a9f7a79a48b948e666d29657d, type: 2}

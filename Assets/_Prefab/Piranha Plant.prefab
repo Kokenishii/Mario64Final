@@ -101,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1914930147008200}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5, y: 0.37333342, z: 0}
+  m_LocalPosition: {x: 0.22, y: 0.37333342, z: 4.78}
   m_LocalScale: {x: 10, y: 1.3333335, z: 10}
   m_Children: []
   m_Father: {fileID: 4720244199213744}
@@ -128,7 +128,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1458755918155200}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.28, z: 0}
   m_LocalScale: {x: 0.10000002, y: 0.7499999, z: 0.1}
   m_Children:
@@ -297,6 +297,7 @@ MonoBehaviour:
   currentState: 0
   piranhaPlantHead: {fileID: 1458755918155200}
   distanceToWakeUp: 3
+  distanceToSleep: 6
   speedToWakeUp: 1
 --- !u!135 &135994746281046250
 SphereCollider:

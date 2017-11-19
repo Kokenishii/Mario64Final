@@ -45,7 +45,6 @@ GameObject:
   - component: {fileID: 65465657042545204}
   - component: {fileID: 114629429057220782}
   - component: {fileID: 54674555981489378}
-  - component: {fileID: 114310398124315960}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -171,9 +170,9 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
@@ -201,36 +200,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114310398124315960
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1094718356582054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0c4ab91c86b46a41b31c0df2d5eeef8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  power: 0
-  stars: 0
-  coinScore: 0
-  redCoinCount: 0
-  starCountText: {fileID: 0}
-  coinCountText: {fileID: 0}
-  livesCountText: {fileID: 0}
-  powerMeter: {fileID: 0}
-  powerMeterImages:
-  - {fileID: 21300000, guid: 2ae5ca307c3814e43a269c8a90ea1017, type: 3}
-  - {fileID: 21300000, guid: c374e1e0800c44198b03a64a49d0453f, type: 3}
-  - {fileID: 21300000, guid: 24fae576e8f654897b42b654136ff8ff, type: 3}
-  - {fileID: 21300000, guid: ea5a64470a5e04ec1a7d67e6dbbe23f1, type: 3}
-  - {fileID: 21300000, guid: d20452663deb44ea1aaf79bf2d755b8c, type: 3}
-  - {fileID: 21300000, guid: 6d64c907a2188449c809679a5acfbdb7, type: 3}
-  - {fileID: 21300000, guid: 9408b8756ef5b4641bc09034da5f435a, type: 3}
-  - {fileID: 21300000, guid: 694308d5c4dd8454bb79d3b780dd8d48, type: 3}
-  - {fileID: 21300000, guid: 20fd341ab3e104a2f962ffbe6d64f855, type: 3}
-  powerSprite: {fileID: 0}
 --- !u!114 &114629429057220782
 MonoBehaviour:
   m_ObjectHideFlags: 1
