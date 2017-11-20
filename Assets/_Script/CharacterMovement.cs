@@ -87,6 +87,10 @@ public class CharacterMovement : MonoBehaviour
         {
 
             jumpSpeed -= gravity * Time.deltaTime;
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                jumpSpeed -= 6f;
+            }
         }
 
         //movement.y equals jumpspeed, which takes into gravity/jumping/high jumping, etc
