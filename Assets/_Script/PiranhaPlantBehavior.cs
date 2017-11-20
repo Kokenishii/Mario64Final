@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Attach this to a Piranha Plant object to make it respond to (and damage) the player
+//Attach this to a Piranha Plant object to make it respond to the player
+//
+//NOTE: See PiranhaPlantDamage.cs (which is attached to the "Mouth" GameObject in the Piranha Plant prefab) 
+//for the code that allows the Piranha Plant to damage the player
+
 public class PiranhaPlantBehavior : MonoBehaviour
 {
 
@@ -57,15 +61,19 @@ public class PiranhaPlantBehavior : MonoBehaviour
 
 			if (Vector3.Distance (player.transform.position, this.transform.position) < distanceToWakeUp) {
 
-				//IN PROGRESS: This code, meant to prevent the plant from responding to the player
-				//if they're moving slowly enough, still needs fixing.
-				//For now, the plant will automatically move into it's attacking state
-				//regardless of player speed
+				//Checks the speed of the player prevent the plant from responding to the player
+				//if they're moving slowly enough
 
-				//if (player.GetComponent<Rigidbody> ().velocity.magnitude > speedToWakeUp) {
+				CharacterController controller = player.GetComponent<CharacterController>();
 
-				currentState = PiranhaPlantState.attacking;
-				//}
+				Vector3 playerVelocity = controller.velocity;
+				float playerSpeed = playerVelocity.magnitude;
+
+				if (playerSpeed > speedToWakeUp) {
+
+					Debug.Log ("I'm awake!");
+					currentState = PiranhaPlantState.attacking;
+				}
 			}
 		}
 
