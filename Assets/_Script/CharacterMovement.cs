@@ -57,13 +57,16 @@ public class CharacterMovement : MonoBehaviour
                 //movement = Vector3.Lerp(movement, new Vector3(0, movement.y, 0), 0.1f);
 
 
+               // movement = Vector3.Lerp(movement, new Vector3(0, movement.y, 0), 0.1f);
 
-                movement = Vector3.zero;
 
                 if (Input.GetButtonDown("Jump"))
                 {
-                    jumpSpeed = crouchJumpHeight * jumpForce;
-                    movement += crouchJumpDistance * transform.forward;
+                   
+                        jumpSpeed = crouchJumpHeight * jumpForce;
+                        movement += crouchJumpDistance * transform.forward;
+                   
+                   
 
                 }
 
