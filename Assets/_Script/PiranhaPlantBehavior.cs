@@ -2,13 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Attach this to a Piranha Plant object to make it respond to (and damage) the player
-public class PiranhaPlantBehavior : MonoBehaviour {
+//Attach this to a Piranha Plant object to make it respond to the player
+//
+//NOTE: See PiranhaPlantDamage.cs (which is attached to the "Mouth" GameObject in the Piranha Plant prefab) 
+//for the code that allows the Piranha Plant to damage the player
+
+public class PiranhaPlantBehavior : MonoBehaviour
+{
 
 	//The different states the Piranha Plant can inhabit
-	public enum PiranhaPlantState {
-		sleeping,	//0
-		attacking	//1
+	public enum PiranhaPlantState
+	{
+		sleeping,
+		//0
+		attacking
+		//1
 	}
 
 	public PiranhaPlantState currentState;
@@ -26,12 +34,17 @@ public class PiranhaPlantBehavior : MonoBehaviour {
 	//assigned in the inspector
 	public float distanceToWakeUp;
 
+	//The distance from the plant the player needs to reach after waking it up
+	//in order to make the plant fall asleep again
+	public float distanceToSleep;
+
 	//The speed the player needs to be moving in order to wake up the Piranha Plant,
 	//assigned in the inspector
 	public float speedToWakeUp;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 
 		//Assigns the player object
 		player = GameObject.FindWithTag ("Player");
@@ -40,43 +53,41 @@ public class PiranhaPlantBehavior : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 
 		//The state of the Piranha when it has not detected the player
 		if (currentState == PiranhaPlantState.sleeping) {
 
 			if (Vector3.Distance (player.transform.position, this.transform.position) < distanceToWakeUp) {
 
-				//IN PROGRESS: This code, meant to prevent the plant from responding to the player
-				//if they're moving slowly enough, still needs fixing.
-				//For now, the plant will automatically move into it's attacking state
-				//regardless of player speed
+				//Checks the speed of the player prevent the plant from responding to the player
+				//if they're moving slowly enough
 
-				//if (player.GetComponent<Rigidbody> ().velocity.magnitude > speedToWakeUp) {
+				CharacterController controller = player.GetComponent<CharacterController>();
 
-				currentState = PiranhaPlantState.attacking;
-			
-				//}
+				Vector3 playerVelocity = controller.velocity;
+				float playerSpeed = playerVelocity.magnitude;
+
+				if (playerSpeed > speedToWakeUp) {
+
+					Debug.Log ("I'm awake!");
+					currentState = PiranhaPlantState.attacking;
+				}
 			}
 		}
 
 		//The state of the Piranha when it has not detected the player
 		if (currentState == PiranhaPlantState.attacking) {
 
-			//IN PROGRESS: The following code is meant to allow the plant to rotate to face the player.
-			//Currently it rotates, but not as desired.
+			//Makes the plant to rotate to face the player whenthe player is in proximity to it
+			piranhaPlantHead.transform.rotation = Quaternion.LookRotation (player.transform.position - transform.position, Vector3.up);
 
-			float headRotationX = piranhaPlantHead.transform.rotation.x;
-			float headRotationZ = piranhaPlantHead.transform.rotation.z;
+			//If the player gets far away enough, the plant will return to sleep
+			if (Vector3.Distance (player.transform.position, this.transform.position) > distanceToSleep) {
 
-			piranhaPlantHead.transform.rotation = Quaternion.LookRotation (player.transform.position);
-
-			Vector3 headRotation = piranhaPlantHead.transform.rotation.eulerAngles;
-
-			headRotation.x = headRotationX;
-			headRotation.z = headRotationZ;
-
-			piranhaPlantHead.transform.rotation = Quaternion.LookRotation(headRotation);
+				currentState = PiranhaPlantState.sleeping;
+			}
 		}
 	}
 }
