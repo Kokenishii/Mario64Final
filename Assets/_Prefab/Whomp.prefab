@@ -111,8 +111,10 @@ MonoBehaviour:
   currentState: 0
   boundaryA: {fileID: 0}
   boundaryB: {fileID: 0}
-  walkSpeed: 5
+  patrolSpeed: 1
+  chaseSpeed: 3
   turnSpeed: 60
+  playerDetected: 0
 --- !u!143 &143314464160106814
 CharacterController:
   m_ObjectHideFlags: 1
