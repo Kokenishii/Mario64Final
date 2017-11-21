@@ -252,28 +252,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6ad193a04d324b619c4c5325e6fb9bf, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &180434857 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1057108282723450, guid: 961fac7b5d927274190b46136ab347a2,
-    type: 2}
-  m_PrefabInternal: {fileID: 881927655}
---- !u!143 &180434863
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 180434857}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 0.99999994
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &233335976
 Prefab:
   m_ObjectHideFlags: 0
@@ -594,16 +572,6 @@ Prefab:
       propertyPath: boundaryB
       value: 
       objectReference: {fileID: 1041543798}
-    - target: {fileID: 114359381901923148, guid: 961fac7b5d927274190b46136ab347a2,
-        type: 2}
-      propertyPath: walkSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114359381901923148, guid: 961fac7b5d927274190b46136ab347a2,
-        type: 2}
-      propertyPath: turnSpeed
-      value: 60
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 961fac7b5d927274190b46136ab347a2, type: 2}
   m_IsPrefabParent: 0
