@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 65558213337633660}
   - component: {fileID: 23804948308945856}
   - component: {fileID: 114359381901923148}
+  - component: {fileID: 143314464160106814}
   m_Layer: 0
   m_Name: Whomp
   m_TagString: Untagged
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1057108282723450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.47, y: 2.08, z: -1.17}
+  m_LocalPosition: {x: 7.41, y: 3.31, z: 0.43}
   m_LocalScale: {x: 2.5, y: 3.5, z: 0.4}
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,3 +109,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  boundaryA: {fileID: 0}
+  boundaryB: {fileID: 0}
+  patrolSpeed: 1
+  chaseSpeed: 3
+  turnSpeed: 60
+  playerDetected: 0
+--- !u!143 &143314464160106814
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1057108282723450}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 0.99999994
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
