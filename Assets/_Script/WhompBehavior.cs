@@ -60,6 +60,9 @@ public class WhompBehavior : MonoBehaviour {
 	//The direction that the Whomp walks in
 	Vector3 walkDirection;
 
+	//The game object representing the player
+	public GameObject player;
+
 	//A bool that indicates whether or not the player has been seen by this Whomp
 	//and should be chased by them.
 	//This bool is mainly altered in the WhompPlayerDetection script, and then
@@ -80,6 +83,8 @@ public class WhompBehavior : MonoBehaviour {
 
 		this.transform.rotation = Quaternion.LookRotation (boundaryA.transform.position - transform.position, Vector3.up);
 
+		player = GameObject.FindGameObjectWithTag ("Player");
+
 		playerDetected = false;
 
 	}
@@ -87,57 +92,30 @@ public class WhompBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		//If the player has collided with the "Whomp Vision Box" game object, which is a child of the base
-		//Whomp game object, the Whomp will move more quickly, so as to catch the player. Otherwise, the Whomp
-		//will move at it's normal patrol speed
-		if (playerDetected == true) {
-		
-			speed = chaseSpeed;
-
-		} else if (playerDetected == false) {
-		
-			speed = patrolSpeed;
-
-		}
-
 		//If the Whomp is just walking around without having sighted a player
 		if (currentState == WhompState.patrolling) {
 
-			//If the Whomp has moved past boundary A, it turns around and walks towards boundary B
-			if (this.transform.position.z >= boundaryA.position.z
-				&& turnedAround == false) {
-
-				this.transform.rotation = Quaternion.LookRotation (boundaryB.transform.position - transform.position, Vector3.up);
-
-				walkDirection = walkDirection * -1f;
-				turnedAround = true;
-			
-			//Vice-versa: If the Whomp has moved past boundary B, it turns around and walks towards boundary A
-			} else if (this.transform.position.z <= boundaryB.position.z
-				&& turnedAround == false) {
-
-				this.transform.rotation = Quaternion.LookRotation (boundaryA.transform.position - transform.position, Vector3.up);
-
-				walkDirection = walkDirection * -1f;
-				turnedAround = true;
-			
-			//If the Whomp hasn't passed either boundary, it just keeps on walkin' forward
-			} else {
-
-				whompCharacterController.Move (walkDirection * speed * Time.deltaTime);
-
-				turnedAround = false;
-
-			}
+			WhompMovement ();
 		}
 
 		//If the Whomp has spotted the player and is waddling aggressively towards them
 		//as Whomps are wont to do
 		if (currentState == WhompState.chasing) {
+
+			WhompMovement ();
+
+			if (Vector3.Distance (player.transform.position, this.transform.position) <= 3f) {
+
+				currentState = WhompState.falling;
+			}
+
+			Debug.Log ("I'm chasing!");
 		}
 
 		//The Whomp is collapsing on the ground in attempts to crush the player
 		if (currentState == WhompState.falling) {
+
+			Debug.Log ("I'm FALLING!");
 		}
 
 		//If the Whomp has fallen is waiting to get up
@@ -146,6 +124,54 @@ public class WhompBehavior : MonoBehaviour {
 
 		//If the Whomp is rising back up
 		if (currentState == WhompState.rising) {
+		}
+	}
+
+
+
+
+
+	//This function governs how a Whomp moves
+	void WhompMovement() {
+
+		//If the player has collided with the "Whomp Vision Box" game object, which is a child of the base
+		//Whomp game object, the Whomp will move more quickly, so as to catch the player. Otherwise, the Whomp
+		//will move at it's normal patrol speed
+		if (playerDetected == true) {
+
+			speed = chaseSpeed;
+
+		} else if (playerDetected == false) {
+
+			speed = patrolSpeed;
+
+		}
+	
+		//If the Whomp has moved past boundary A, it turns around and walks towards boundary B
+		if (this.transform.position.z >= boundaryA.position.z
+			&& turnedAround == false) {
+
+			this.transform.rotation = Quaternion.LookRotation (boundaryB.transform.position - transform.position, Vector3.up);
+
+			walkDirection = walkDirection * -1f;
+			turnedAround = true;
+
+			//Vice-versa: If the Whomp has moved past boundary B, it turns around and walks towards boundary A
+		} else if (this.transform.position.z <= boundaryB.position.z
+			&& turnedAround == false) {
+
+			this.transform.rotation = Quaternion.LookRotation (boundaryA.transform.position - transform.position, Vector3.up);
+
+			walkDirection = walkDirection * -1f;
+			turnedAround = true;
+
+			//If the Whomp hasn't passed either boundary, it just keeps on walkin' forward
+		} else {
+
+			whompCharacterController.Move (walkDirection * speed * Time.deltaTime);
+
+			turnedAround = false;
+
 		}
 	}
 }
