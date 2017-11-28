@@ -17,24 +17,38 @@ public class CharacterMovement : MonoBehaviour
     public float jumpForce = 10f;
     // bool crouch = false;
     // Use this for initialization
-    public float crouchSpeed;
+    float crouchSpeed;
+
+    [Tooltip("between 0 and 1, recommend:0.9")]
+    public float crouchMultiplier=0.9f;
     public float crouchJumpHeight;
     public float crouchJumpDistance;
     public GameObject myCamera;
+
+    bool takeInput = true;
+  
+   
     void Start()
     {
-
+        crouchSpeed = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        
         //get the character controller component
         CharacterController myCharacterController = GetComponent<CharacterController>();
-
+      
+       
+            horizontal = Input.GetAxis("Horizontal");
+            vertical = Input.GetAxis("Vertical");
+        
+            
+       
         //initiating the input from keyboard
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+    
 
         //create vector3 movement for CharacterController.Move
         //Using forward and rightward of camera to treat vertical and horizontal axis first
@@ -53,12 +67,10 @@ public class CharacterMovement : MonoBehaviour
             //jumpSpeed -= gravity * Time.deltaTime;
             if (Input.GetKey(KeyCode.LeftShift))
             {
+                crouchSpeed = Mathf.Lerp(crouchSpeed, 0, crouchMultiplier * Time.deltaTime);
 
-                //movement = Vector3.Lerp(movement, new Vector3(0, movement.y, 0), 0.1f);
-
-
-               // movement = Vector3.Lerp(movement, new Vector3(0, movement.y, 0), 0.1f);
-
+              // StartCoroutine(crouchEnd());
+                
 
                 if (Input.GetButtonDown("Jump"))
                 {
@@ -74,6 +86,7 @@ public class CharacterMovement : MonoBehaviour
 
             else
             {
+                crouchSpeed = 1;
                 if (Input.GetButtonDown("Jump"))
                 {
                     jumpSpeed = jumpForce;
@@ -98,7 +111,7 @@ public class CharacterMovement : MonoBehaviour
 
         //movement.y equals jumpspeed, which takes into gravity/jumping/high jumping, etc
         movement.y = jumpSpeed;
-        myCharacterController.Move(movement * moveSpeed * Time.deltaTime);
+        myCharacterController.Move(movement * moveSpeed * Time.deltaTime*crouchSpeed);
 
         //if(Input.GetKey(KeyCode.W))
         //{
@@ -106,5 +119,10 @@ public class CharacterMovement : MonoBehaviour
         //}
         //
 
+    }
+    IEnumerator crouchEnd()
+    {
+        yield return 0;
+       
     }
 }
