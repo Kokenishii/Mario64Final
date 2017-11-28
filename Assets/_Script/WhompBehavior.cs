@@ -39,8 +39,8 @@ public class WhompBehavior : MonoBehaviour {
 
 	//The locations at which the Whomp turns around and walks
 	//in the other direction
-	public Transform boundaryA;
-	public Transform boundaryB;
+	public Vector3 boundaryA;
+	public Vector3 boundaryB;
 
 	//The speed at which the Whomp moves
 	float speed;
@@ -69,6 +69,13 @@ public class WhompBehavior : MonoBehaviour {
 	//passed to this script via the singleton "Instance"
 	public bool playerDetected;
 
+	//Determines whether or not the Whomp should be moving at the moment
+	bool isMoving;
+
+	//The game object parented to the Whomp that casues the Whomp to go into chasing mode
+	//whenever the player walks into it
+	public GameObject whompVisionBox;
+
 	// Use this for initialization
 	void Start () {
 
@@ -81,11 +88,17 @@ public class WhompBehavior : MonoBehaviour {
 
 		walkDirection = Vector3.forward;
 
-		this.transform.rotation = Quaternion.LookRotation (boundaryA.transform.position - transform.position, Vector3.up);
+		this.transform.rotation = Quaternion.LookRotation (boundaryA - transform.position, Vector3.up);
 
 		player = GameObject.FindGameObjectWithTag ("Player");
 
 		playerDetected = false;
+
+		isMoving = true;
+
+		//Grabs the first child of the Whomp (the only child of the Whomp is the Whomp Vision Box)
+		//and links it to the variable whompVisionBox
+		//whompVisionBox = this.gameObject.transform.GetChild (0);
 
 	}
 	
@@ -115,11 +128,19 @@ public class WhompBehavior : MonoBehaviour {
 		//The Whomp is collapsing on the ground in attempts to crush the player
 		if (currentState == WhompState.falling) {
 
+			this.transform.RotateAround (new Vector3 (this.transform.position.x, this.transform.position.y - 0.5f, this.transform.position.z), Vector3.right, 90f);
+
+			isMoving = false;
+
 			Debug.Log ("I'm FALLING!");
+
+			currentState = WhompState.fell;
 		}
 
 		//If the Whomp has fallen is waiting to get up
 		if (currentState == WhompState.fell) {
+
+			Debug.Log ("I fell.");
 		}
 
 		//If the Whomp is rising back up
@@ -148,19 +169,19 @@ public class WhompBehavior : MonoBehaviour {
 		}
 	
 		//If the Whomp has moved past boundary A, it turns around and walks towards boundary B
-		if (this.transform.position.z >= boundaryA.position.z
+		if (this.transform.position.z >= boundaryA.z
 			&& turnedAround == false) {
 
-			this.transform.rotation = Quaternion.LookRotation (boundaryB.transform.position - transform.position, Vector3.up);
+			this.transform.rotation = Quaternion.LookRotation (boundaryB - transform.position, Vector3.up);
 
 			walkDirection = walkDirection * -1f;
 			turnedAround = true;
 
 			//Vice-versa: If the Whomp has moved past boundary B, it turns around and walks towards boundary A
-		} else if (this.transform.position.z <= boundaryB.position.z
+		} else if (this.transform.position.z <= boundaryB.z
 			&& turnedAround == false) {
 
-			this.transform.rotation = Quaternion.LookRotation (boundaryA.transform.position - transform.position, Vector3.up);
+			this.transform.rotation = Quaternion.LookRotation (boundaryA - transform.position, Vector3.up);
 
 			walkDirection = walkDirection * -1f;
 			turnedAround = true;
@@ -168,10 +189,14 @@ public class WhompBehavior : MonoBehaviour {
 			//If the Whomp hasn't passed either boundary, it just keeps on walkin' forward
 		} else {
 
-			whompCharacterController.Move (walkDirection * speed * Time.deltaTime);
+			//Checks to see if the Whomp should be moving or not.
+			//If it has just tried to fall on the player, then it shouldn't be moving.
+			if (isMoving == true) {
+				
+				whompCharacterController.Move (walkDirection * speed * Time.deltaTime);
 
-			turnedAround = false;
-
+				turnedAround = false;
+			}
 		}
 	}
 }
