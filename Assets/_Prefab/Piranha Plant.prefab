@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 33468016981980624}
   - component: {fileID: 135994746281046250}
   - component: {fileID: 23503162711111572}
+  - component: {fileID: 114256972213477182}
   m_Layer: 0
   m_Name: Mouth
   m_TagString: Untagged
@@ -101,7 +102,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1914930147008200}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5, y: 0.37333342, z: 0}
+  m_LocalPosition: {x: 0.22, y: 0.37333342, z: 4.78}
   m_LocalScale: {x: 10, y: 1.3333335, z: 10}
   m_Children: []
   m_Father: {fileID: 4720244199213744}
@@ -128,7 +129,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1458755918155200}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.28, z: 0}
   m_LocalScale: {x: 0.10000002, y: 0.7499999, z: 0.1}
   m_Children:
@@ -296,8 +297,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   piranhaPlantHead: {fileID: 1458755918155200}
-  distanceToWakeUp: 3
+  distanceToWakeUp: 5
+  distanceToSleep: 8
   speedToWakeUp: 1
+--- !u!114 &114256972213477182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1914930147008200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd4a55c2a64e35c4785b7778f767b104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135994746281046250
 SphereCollider:
   m_ObjectHideFlags: 1
