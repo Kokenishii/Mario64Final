@@ -76,6 +76,11 @@ public class WhompBehavior : MonoBehaviour {
 	//whenever the player walks into it
 	public GameObject whompVisionBox;
 
+	//A timer used to measure how long ago a Whomp fell on the ground
+	public float timer;
+	//The number of seconds before the Whomp rises back up after falling
+	public float timeToRiseAgain;
+
 	// Use this for initialization
 	void Start () {
 
@@ -99,6 +104,8 @@ public class WhompBehavior : MonoBehaviour {
 		//Grabs the first child of the Whomp (the only child of the Whomp is the Whomp Vision Box)
 		//and links it to the variable whompVisionBox
 		//whompVisionBox = this.gameObject.transform.GetChild (0);
+
+		timer = 0f;
 
 	}
 	
@@ -140,11 +147,28 @@ public class WhompBehavior : MonoBehaviour {
 		//If the Whomp has fallen is waiting to get up
 		if (currentState == WhompState.fell) {
 
+			timer += Time.deltaTime;
+
+			if (timer >= timeToRiseAgain) {
+
+				timer = 0f;
+
+				currentState = WhompState.rising;
+			}
+
 			Debug.Log ("I fell.");
 		}
 
 		//If the Whomp is rising back up
 		if (currentState == WhompState.rising) {
+
+			this.transform.RotateAround (new Vector3 (this.transform.position.x, this.transform.position.y - 2f, this.transform.position.z), Vector3.right, -90f);
+
+			isMoving = true;
+
+			Debug.Log ("I'm rising.");
+
+			currentState = WhompState.patrolling;
 		}
 	}
 
