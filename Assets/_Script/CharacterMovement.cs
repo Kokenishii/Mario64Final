@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-
+    //crouch key: shift
+    //jump key: space
+    //punch key:J
     //Problem Lists:
     //1. Crouching Lerp(Slow down instead of stopping suddenly) Lerp is not working well
     //2. If you keep pressing crouch, jump and jump again, it's not working. Because
@@ -13,7 +15,8 @@ public class CharacterMovement : MonoBehaviour
     public float horizontal;
     public float vertical;
     public float gravity = 10f;
-    float jumpSpeed;
+    float jumpSpeed; //internal use
+    [Tooltip("how high jump is")]
     public float jumpForce = 10f;
     // bool crouch = false;
     // Use this for initialization
@@ -44,8 +47,10 @@ public class CharacterMovement : MonoBehaviour
        
             horizontal = Input.GetAxis("Horizontal");
             vertical = Input.GetAxis("Vertical");
-        
-            
+        horizontal *= Mathf.Abs(horizontal);
+        vertical *= Mathf.Abs(vertical);
+       // print(horizontal + "//" + vertical);
+           
        
         //initiating the input from keyboard
     
@@ -59,16 +64,34 @@ public class CharacterMovement : MonoBehaviour
 
         transform.forward = Vector3.Lerp(transform.forward, new Vector3(movement.x, 0, movement.z), 0.7f);
         //roate the character to wherever it is facing
-
-
+        
+        if(Mathf.Abs(horizontal) >=0.9|| Mathf.Abs(vertical) >=0.9)
+        {
+            if(Input.GetButtonDown("Fire2"))
+            {
+                jumpSpeed = 0.5f * jumpForce;
+                movement *= 3;
+                print("longpunch");
+            }
+        }
+        else if(Input.GetButtonDown("Fire2"))
+        {
+            print("normal Punch");
+        }
 
         if (myCharacterController.isGrounded)
         {
             //jumpSpeed -= gravity * Time.deltaTime;
             if (Input.GetKey(KeyCode.LeftShift))
             {
+                //crouch
                 crouchSpeed = Mathf.Lerp(crouchSpeed, 0, crouchMultiplier * Time.deltaTime);
-
+                print("crouching");
+                if(Input.GetButtonDown("Fire2"))
+                {
+                    jumpSpeed = jumpForce * 0.2f;
+                    print("sliding kicik");
+                }
               // StartCoroutine(crouchEnd());
                 
 
@@ -77,7 +100,7 @@ public class CharacterMovement : MonoBehaviour
                    
                         jumpSpeed = crouchJumpHeight * jumpForce;
                         movement += crouchJumpDistance * transform.forward;
-                   
+                    print("long jump");
                    
 
                 }
@@ -87,9 +110,12 @@ public class CharacterMovement : MonoBehaviour
             else
             {
                 crouchSpeed = 1;
+                //reset crouch speed to 1 (normal running)
+
                 if (Input.GetButtonDown("Jump"))
                 {
                     jumpSpeed = jumpForce;
+                    print("normal jump");
 
                 }
             }
@@ -103,9 +129,10 @@ public class CharacterMovement : MonoBehaviour
         {
 
             jumpSpeed -= gravity * Time.deltaTime;
-            if(Input.GetKeyDown(KeyCode.Space))
+            if(Input.GetButtonDown("Fire2"))
             {
                 jumpSpeed -= 6f;
+                print("grounchPunch");
             }
         }
 
