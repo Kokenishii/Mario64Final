@@ -29,7 +29,8 @@ public class CharacterMovement : MonoBehaviour
     public GameObject myCamera;
 
     bool takeInput = true;
-  
+
+   
    
     void Start()
     {
@@ -48,10 +49,7 @@ public class CharacterMovement : MonoBehaviour
             horizontal = Input.GetAxis("Horizontal");
             vertical = Input.GetAxis("Vertical");
         horizontal *= Mathf.Abs(horizontal);
-        vertical *= Mathf.Abs(vertical);
-       // print(horizontal + "//" + vertical);
-           
-       
+        vertical *= Mathf.Abs(vertical); 
         //initiating the input from keyboard
     
 
@@ -67,14 +65,15 @@ public class CharacterMovement : MonoBehaviour
         
         if(Mathf.Abs(horizontal) >=0.9|| Mathf.Abs(vertical) >=0.9)
         {
-            if(Input.GetButtonDown("Fire2"))
+            if(Input.GetButtonDown("Punch"))
             {
                 jumpSpeed = 0.5f * jumpForce;
-                movement *= 3;
+                //movement *= 3;
+                crouchSpeed *= crouchJumpDistance;
                 print("longpunch");
             }
         }
-        else if(Input.GetButtonDown("Fire2"))
+        else if(Input.GetButtonDown("Punch"))
         {
             print("normal Punch");
         }
@@ -82,14 +81,15 @@ public class CharacterMovement : MonoBehaviour
         if (myCharacterController.isGrounded)
         {
             //jumpSpeed -= gravity * Time.deltaTime;
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetButton("Crouch"))
             {
                 //crouch
                 crouchSpeed = Mathf.Lerp(crouchSpeed, 0, crouchMultiplier * Time.deltaTime);
-                print("crouching");
-                if(Input.GetButtonDown("Fire2"))
+               // print("crouching");
+                if(Input.GetButtonDown("Punch"))
                 {
-                    jumpSpeed = jumpForce * 0.2f;
+                    jumpSpeed = jumpForce * 0.4f;
+                    
                     print("sliding kicik");
                 }
               // StartCoroutine(crouchEnd());
@@ -99,7 +99,7 @@ public class CharacterMovement : MonoBehaviour
                 {
                    
                         jumpSpeed = crouchJumpHeight * jumpForce;
-                        movement += crouchJumpDistance * transform.forward;
+                        crouchSpeed *= crouchJumpDistance;
                     print("long jump");
                    
 
@@ -129,7 +129,7 @@ public class CharacterMovement : MonoBehaviour
         {
 
             jumpSpeed -= gravity * Time.deltaTime;
-            if(Input.GetButtonDown("Fire2"))
+            if(Input.GetButtonDown("Punch"))
             {
                 jumpSpeed -= 6f;
                 print("grounchPunch");
@@ -137,8 +137,11 @@ public class CharacterMovement : MonoBehaviour
         }
 
         //movement.y equals jumpspeed, which takes into gravity/jumping/high jumping, etc
-        movement.y = jumpSpeed;
-        myCharacterController.Move(movement * moveSpeed * Time.deltaTime*crouchSpeed);
+        movement.x *= moveSpeed *crouchSpeed * Time.deltaTime;
+        movement.z *= moveSpeed * crouchSpeed *Time.deltaTime;
+        movement.y = jumpSpeed*moveSpeed*Time.deltaTime;
+
+        myCharacterController.Move(movement );
 
         //if(Input.GetKey(KeyCode.W))
         //{
@@ -151,5 +154,10 @@ public class CharacterMovement : MonoBehaviour
     {
         yield return 0;
        
+    }
+    IEnumerator longJump()
+    {
+        yield return 0;
+
     }
 }
