@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-
+    //crouch key: shift
+    //jump key: space
+    //punch key:J
     //Problem Lists:
     //1. Crouching Lerp(Slow down instead of stopping suddenly) Lerp is not working well
     //2. If you keep pressing crouch, jump and jump again, it's not working. Because
@@ -13,28 +15,43 @@ public class CharacterMovement : MonoBehaviour
     public float horizontal;
     public float vertical;
     public float gravity = 10f;
-    float jumpSpeed;
+    float jumpSpeed; //internal use
+    [Tooltip("how high jump is")]
     public float jumpForce = 10f;
     // bool crouch = false;
     // Use this for initialization
-    public float crouchSpeed;
+    float crouchSpeed;
+
+    [Tooltip("between 0 and 1, recommend:0.9")]
+    public float crouchMultiplier=0.9f;
     public float crouchJumpHeight;
     public float crouchJumpDistance;
     public GameObject myCamera;
+
+    bool takeInput = true;
+
+   
+   
     void Start()
     {
-
+        crouchSpeed = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        
         //get the character controller component
         CharacterController myCharacterController = GetComponent<CharacterController>();
-
+      
+       
+            horizontal = Input.GetAxis("Horizontal");
+            vertical = Input.GetAxis("Vertical");
+        horizontal *= Mathf.Abs(horizontal);
+        vertical *= Mathf.Abs(vertical); 
         //initiating the input from keyboard
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+    
 
         //create vector3 movement for CharacterController.Move
         //Using forward and rightward of camera to treat vertical and horizontal axis first
@@ -45,27 +62,45 @@ public class CharacterMovement : MonoBehaviour
 
         transform.forward = Vector3.Lerp(transform.forward, new Vector3(movement.x, 0, movement.z), 0.7f);
         //roate the character to wherever it is facing
-
-
+        
+        if(Mathf.Abs(horizontal) >=0.9|| Mathf.Abs(vertical) >=0.9)
+        {
+            if(Input.GetButtonDown("Punch"))
+            {
+                jumpSpeed = 0.5f * jumpForce;
+                //movement *= 3;
+                crouchSpeed *= crouchJumpDistance;
+                print("longpunch");
+            }
+        }
+        else if(Input.GetButtonDown("Punch"))
+        {
+            print("normal Punch");
+        }
 
         if (myCharacterController.isGrounded)
         {
             //jumpSpeed -= gravity * Time.deltaTime;
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetButton("Crouch"))
             {
-
-                //movement = Vector3.Lerp(movement, new Vector3(0, movement.y, 0), 0.1f);
-
-
-               // movement = Vector3.Lerp(movement, new Vector3(0, movement.y, 0), 0.1f);
-
+                //crouch
+                crouchSpeed = Mathf.Lerp(crouchSpeed, 0, crouchMultiplier * Time.deltaTime);
+               // print("crouching");
+                if(Input.GetButtonDown("Punch"))
+                {
+                    jumpSpeed = jumpForce * 0.4f;
+                    
+                    print("sliding kicik");
+                }
+              // StartCoroutine(crouchEnd());
+                
 
                 if (Input.GetButtonDown("Jump"))
                 {
                    
                         jumpSpeed = crouchJumpHeight * jumpForce;
-                        movement += crouchJumpDistance * transform.forward;
-                   
+                        crouchSpeed *= crouchJumpDistance;
+                    print("long jump");
                    
 
                 }
@@ -74,9 +109,13 @@ public class CharacterMovement : MonoBehaviour
 
             else
             {
+                crouchSpeed = 1;
+                //reset crouch speed to 1 (normal running)
+
                 if (Input.GetButtonDown("Jump"))
                 {
                     jumpSpeed = jumpForce;
+                    print("normal jump");
 
                 }
             }
@@ -90,21 +129,35 @@ public class CharacterMovement : MonoBehaviour
         {
 
             jumpSpeed -= gravity * Time.deltaTime;
-            if(Input.GetKeyDown(KeyCode.Space))
+            if(Input.GetButtonDown("Punch"))
             {
                 jumpSpeed -= 6f;
+                print("grounchPunch");
             }
         }
 
         //movement.y equals jumpspeed, which takes into gravity/jumping/high jumping, etc
-        movement.y = jumpSpeed;
-        myCharacterController.Move(movement * moveSpeed * Time.deltaTime);
+        movement.x *= moveSpeed *crouchSpeed * Time.deltaTime;
+        movement.z *= moveSpeed * crouchSpeed *Time.deltaTime;
+        movement.y = jumpSpeed*moveSpeed*Time.deltaTime;
+
+        myCharacterController.Move(movement );
 
         //if(Input.GetKey(KeyCode.W))
         //{
         //    movement = transform.forward * moveSpeed * Time.deltaTime;
         //}
         //
+
+    }
+    IEnumerator crouchEnd()
+    {
+        yield return 0;
+       
+    }
+    IEnumerator longJump()
+    {
+        yield return 0;
 
     }
 }
