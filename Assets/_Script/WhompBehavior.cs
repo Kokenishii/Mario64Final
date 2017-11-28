@@ -39,6 +39,9 @@ public class WhompBehavior : MonoBehaviour {
 
 	//The locations at which the Whomp turns around and walks
 	//in the other direction
+	public GameObject startingDirectionBoundary;
+	public GameObject secondDirectionBoundary;
+
 	public Vector3 boundaryA;
 	public Vector3 boundaryB;
 
@@ -93,7 +96,7 @@ public class WhompBehavior : MonoBehaviour {
 
 		walkDirection = Vector3.forward;
 
-		this.transform.rotation = Quaternion.LookRotation (boundaryA - transform.position, Vector3.up);
+		this.transform.rotation = Quaternion.LookRotation (startingDirectionBoundary.transform.position - transform.position, Vector3.up);
 
 		player = GameObject.FindGameObjectWithTag ("Player");
 
@@ -194,7 +197,7 @@ public class WhompBehavior : MonoBehaviour {
 	
 		//If the Whomp has moved past boundary A, it turns around and walks towards boundary B
 		if (this.transform.position.z >= boundaryA.z
-			&& turnedAround == false) {
+		    && turnedAround == false) {
 
 			this.transform.rotation = Quaternion.LookRotation (boundaryB - transform.position, Vector3.up);
 
@@ -203,7 +206,7 @@ public class WhompBehavior : MonoBehaviour {
 
 			//Vice-versa: If the Whomp has moved past boundary B, it turns around and walks towards boundary A
 		} else if (this.transform.position.z <= boundaryB.z
-			&& turnedAround == false) {
+		           && turnedAround == false) {
 
 			this.transform.rotation = Quaternion.LookRotation (boundaryA - transform.position, Vector3.up);
 
@@ -223,4 +226,36 @@ public class WhompBehavior : MonoBehaviour {
 			}
 		}
 	}
+
+
+
+
+	//void OnCollisionEnter(Collision col) {
+
+	//	Debug.Log ("COLLIDED!!!");
+
+		//if you collide with this or this, reverse direction & head towards the other target
+
+	//	if (col.gameObject.tag == "Whomp Starting Boundary" 
+	//		&& turnedAround == false) {
+		
+	//		this.transform.rotation = Quaternion.LookRotation (secondDirectionBoundary.transform.position - transform.position, Vector3.up);
+
+	//		walkDirection = walkDirection * -1f;
+	//		turnedAround = true;
+
+	//		Debug.Log ("This is the starting boundary!");
+	//	}
+
+	//	if (col.gameObject.tag == "Whomp Second Boundary"
+	//		&& turnedAround == false) {
+
+	//		this.transform.rotation = Quaternion.LookRotation (startingDirectionBoundary.transform.position - transform.position, Vector3.up);
+
+	//		walkDirection = walkDirection * -1f;
+	//		turnedAround = true;
+
+	//		Debug.Log ("This is the second boundary!");
+	//	}
+	//}
 }

@@ -79,8 +79,6 @@ public class ThwompBehavior : MonoBehaviour
 
 				currentState = ThwompState.falling;
 			}
-
-			Debug.Log ("Waiting to fall.");
 		}
 
 		if (currentState == ThwompState.falling) {
@@ -92,8 +90,6 @@ public class ThwompBehavior : MonoBehaviour
 
 			//Checks if the Thwomp is still moving or if it has run into something
 			StartCoroutine (CheckIfMoving ());
-
-			Debug.Log ("Falling!");
 		}
 
 		//If the Thwomp is wating to rise
@@ -110,8 +106,6 @@ public class ThwompBehavior : MonoBehaviour
 
 				currentState = ThwompState.rising;
 			}
-
-			Debug.Log ("Waiting to rise.");
 		}
 
 		if (currentState == ThwompState.rising) {
@@ -123,8 +117,6 @@ public class ThwompBehavior : MonoBehaviour
 			if (this.transform.position.y >= startPosition.y) {
 				currentState = ThwompState.waitingToFall;
 			}
-
-			Debug.Log ("Rising.");
 		}
 	}
 		
