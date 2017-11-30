@@ -104,6 +104,10 @@ public class CharacterMovement : MonoBehaviour
                    
 
                 }
+                else
+                {
+                    crouchSpeed = 1;
+                }
 
             }
 
