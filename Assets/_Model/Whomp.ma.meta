@@ -1,57 +1,55 @@
 fileFormatVersion: 2
-guid: 3a481273199cb0e408dc48bd31745718
-timeCreated: 1511854498
+guid: b87b23508fa7d3545aa0caab861cd5b5
+timeCreated: 1511995816
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: joint3
-    100002: joint4
-    100004: joint5
-    100006: joint6
-    100008: locator1
-    100010: pCube2
-    100012: pCylinder1
-    100014: pCylinder2
-    100016: pPlane3
-    100018: pPlane4
-    100020: pSphere1
-    100022: pSphere2
-    100024: //RootNode
-    400000: joint3
-    400002: joint4
-    400004: joint5
-    400006: joint6
-    400008: locator1
-    400010: pCube2
-    400012: pCylinder1
-    400014: pCylinder2
-    400016: pPlane3
-    400018: pPlane4
-    400020: pSphere1
-    400022: pSphere2
-    400024: //RootNode
-    2300000: pCube2
-    2300002: pCylinder2
-    2300004: pPlane3
-    2300006: pPlane4
-    2300008: pSphere2
-    3300000: pCube2
-    3300002: pCylinder2
-    3300004: pPlane3
-    3300006: pPlane4
-    3300008: pSphere2
+    100000: joint10
+    100002: joint11
+    100004: joint12
+    100006: joint7
+    100008: joint8
+    100010: joint9
+    100012: locator1
+    100014: pCube2
+    100016: pCylinder2
+    100018: pCylinder3
+    100020: pPlane3
+    100022: pPlane4
+    100024: pSphere2
+    100026: //RootNode
+    400000: joint10
+    400002: joint11
+    400004: joint12
+    400006: joint7
+    400008: joint8
+    400010: joint9
+    400012: locator1
+    400014: pCube2
+    400016: pCylinder2
+    400018: pCylinder3
+    400020: pPlane3
+    400022: pPlane4
+    400024: pSphere2
+    400026: //RootNode
+    2300000: pPlane3
+    2300002: pPlane4
+    3300000: pPlane3
+    3300002: pPlane4
     4300000: pCube2
-    4300002: pCylinder1
-    4300004: pSphere1
-    4300006: pSphere2
-    4300008: pCylinder2
-    4300010: pPlane3
-    4300012: pPlane4
-    7400000: Take 001
+    4300002: pSphere2
+    4300004: pCylinder2
+    4300006: pPlane3
+    4300008: pPlane4
+    4300010: pCylinder3
+    7400000: WhompFalling
+    7400002: WhompWalking
     9500000: //RootNode
-    13700000: pCylinder1
-    13700002: pSphere1
+    13700000: pCube2
+    13700002: pCylinder2
+    13700004: pCylinder3
+    13700006: pSphere2
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -83,7 +81,63 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: WhompFalling
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: WhompWalking
+      takeName: Take 001
+      firstFrame: 101
+      lastFrame: 101
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
     isReadable: 1
   meshes:
     lODScreenPercentages: []

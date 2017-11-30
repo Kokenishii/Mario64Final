@@ -84,6 +84,9 @@ public class WhompBehavior : MonoBehaviour {
 	//The number of seconds before the Whomp rises back up after falling
 	public float timeToRiseAgain;
 
+	//The animator used to govern the Whomp's animations
+	Animator myAnimator;
+
 	// Use this for initialization
 	void Start () {
 
@@ -110,6 +113,7 @@ public class WhompBehavior : MonoBehaviour {
 
 		timer = 0f;
 
+		myAnimator = GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -138,9 +142,11 @@ public class WhompBehavior : MonoBehaviour {
 		//The Whomp is collapsing on the ground in attempts to crush the player
 		if (currentState == WhompState.falling) {
 
-			this.transform.RotateAround (new Vector3 (this.transform.position.x, this.transform.position.y - 0.5f, this.transform.position.z), Vector3.right, 90f);
+			//this.transform.RotateAround (new Vector3 (this.transform.position.x, this.transform.position.y - 0.5f, this.transform.position.z), Vector3.right, 90f);
 
 			isMoving = false;
+
+			myAnimator.SetBool ("isFalling", true);
 
 			Debug.Log ("I'm FALLING!");
 
@@ -168,6 +174,8 @@ public class WhompBehavior : MonoBehaviour {
 			this.transform.RotateAround (new Vector3 (this.transform.position.x, this.transform.position.y - 2f, this.transform.position.z), Vector3.right, -90f);
 
 			isMoving = true;
+
+			myAnimator.SetBool ("isFalling", false);
 
 			Debug.Log ("I'm rising.");
 
@@ -230,7 +238,17 @@ public class WhompBehavior : MonoBehaviour {
 
 
 
-	//void OnCollisionEnter(Collision col) {
+	void OnTriggerEnter(Collider col) {
+
+			//Makes sure that it is the player that the Whomp has collided with,
+			//and that the Whomp is in falling mode (because touching the Whomp
+			//doesn't cause damage unless it's falling
+			if (col.gameObject.tag == "Player"
+			&& currentState == WhompState.falling) {
+
+				PlayerHealthAndPickups.Instance.power -= 3;
+				Debug.Log ("Power: " + PlayerHealthAndPickups.Instance.power);
+			}
 
 	//	Debug.Log ("COLLIDED!!!");
 
@@ -257,5 +275,5 @@ public class WhompBehavior : MonoBehaviour {
 
 	//		Debug.Log ("This is the second boundary!");
 	//	}
-	//}
+	}
 }
