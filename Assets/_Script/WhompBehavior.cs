@@ -240,16 +240,6 @@ public class WhompBehavior : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col) {
 
-			//Makes sure that it is the player that the Whomp has collided with,
-			//and that the Whomp is in falling mode (because touching the Whomp
-			//doesn't cause damage unless it's falling
-			if (col.gameObject.tag == "Player"
-			&& currentState == WhompState.falling) {
-
-				PlayerHealthAndPickups.Instance.power -= 3;
-				Debug.Log ("Power: " + PlayerHealthAndPickups.Instance.power);
-			}
-
 	//	Debug.Log ("COLLIDED!!!");
 
 		//if you collide with this or this, reverse direction & head towards the other target
