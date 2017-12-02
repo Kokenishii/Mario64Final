@@ -99,7 +99,7 @@ public class WhompBehavior : MonoBehaviour {
 
 		walkDirection = Vector3.forward;
 
-		this.transform.rotation = Quaternion.LookRotation (startingDirectionBoundary.transform.position - transform.position, Vector3.up);
+		this.transform.rotation = Quaternion.LookRotation (boundaryA - transform.position, Vector3.up);
 
 		player = GameObject.FindGameObjectWithTag ("Player");
 
