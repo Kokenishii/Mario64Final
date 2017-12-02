@@ -8,8 +8,7 @@ TagManager:
   - Red Coin
   - Star
   - Thwomp
-  - Whomp Starting Boundary
-  - Whomp Second Boundary
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
