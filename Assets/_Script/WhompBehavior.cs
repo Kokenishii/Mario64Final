@@ -5,12 +5,12 @@ using UnityEngine;
 //A script that attaches to the Whomp prefab in order to make it do the 
 //things it does in it's various states
 
-//NOTE: This script relies on two game objects, "Whomp Marker A" and "Whomp Marker B," to determine
+//NOTE 1: This script relies on two game objects, "Whomp Marker A" and "Whomp Marker B," to determine
 //what it should walk towards and where it should stop walking and turn around. These two objects should
 //be placed at wither side of the Whomp at whatever boundaries you would like to set for it's movement,
-//and then assigned to this script in the inspector
+//and then assigned to this script in the inspector.
 
-//ALSO NOTE: The code that governs if the player can be seen by the Whomp is in a script
+//NOTE 2: The code that governs if the player can be seen by the Whomp is in a script
 //attached to the "Whomp Vision Box" game object, which is a child of the base
 //Whomp game object
 
@@ -41,9 +41,6 @@ public class WhompBehavior : MonoBehaviour {
 	//in the other direction
 	public GameObject startingDirectionBoundary;
 	public GameObject secondDirectionBoundary;
-
-	public Vector3 boundaryA;
-	public Vector3 boundaryB;
 
 	//The speed at which the Whomp moves
 	float speed;
@@ -97,9 +94,9 @@ public class WhompBehavior : MonoBehaviour {
 
 		turnedAround = false;
 
-		walkDirection = Vector3.forward;
+		this.transform.rotation = Quaternion.LookRotation (startingDirectionBoundary.transform.position - transform.position, Vector3.up);
 
-		this.transform.rotation = Quaternion.LookRotation (boundaryA - transform.position, Vector3.up);
+		walkDirection = startingDirectionBoundary.transform.position - transform.position;
 
 		player = GameObject.FindGameObjectWithTag ("Player");
 
@@ -204,25 +201,25 @@ public class WhompBehavior : MonoBehaviour {
 		}
 	
 		//If the Whomp has moved past boundary A, it turns around and walks towards boundary B
-		if (this.transform.position.z >= boundaryA.z
-		    && turnedAround == false) {
+		//if (this.transform.position.z >= boundaryA.z
+		//    && turnedAround == false) {
 
-			this.transform.rotation = Quaternion.LookRotation (boundaryB - transform.position, Vector3.up);
+		//	this.transform.rotation = Quaternion.LookRotation (boundaryB - transform.position, Vector3.up);
 
-			walkDirection = walkDirection * -1f;
-			turnedAround = true;
+		//	walkDirection = walkDirection * -1f;
+		//	turnedAround = true;
 
 			//Vice-versa: If the Whomp has moved past boundary B, it turns around and walks towards boundary A
-		} else if (this.transform.position.z <= boundaryB.z
-		           && turnedAround == false) {
+		//} else if (this.transform.position.z <= boundaryB.z
+		//           && turnedAround == false) {
+			
+		//	this.transform.rotation = Quaternion.LookRotation (boundaryA - transform.position, Vector3.up);
 
-			this.transform.rotation = Quaternion.LookRotation (boundaryA - transform.position, Vector3.up);
-
-			walkDirection = walkDirection * -1f;
-			turnedAround = true;
+		//	walkDirection = walkDirection * -1f;
+		//	turnedAround = true;
 
 			//If the Whomp hasn't passed either boundary, it just keeps on walkin' forward
-		} else {
+	//	} else {
 
 			//Checks to see if the Whomp should be moving or not.
 			//If it has just tried to fall on the player, then it shouldn't be moving.
@@ -232,7 +229,7 @@ public class WhompBehavior : MonoBehaviour {
 
 				turnedAround = false;
 			}
-		}
+		//}
 	}
 
 
@@ -240,30 +237,32 @@ public class WhompBehavior : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col) {
 
-	//	Debug.Log ("COLLIDED!!!");
+		Debug.Log ("COLLIDED!!!");
 
 		//if you collide with this or this, reverse direction & head towards the other target
 
-	//	if (col.gameObject.tag == "Whomp Starting Boundary" 
-	//		&& turnedAround == false) {
+		if (col.gameObject.tag == "Whomp Starting Boundary" 
+			&& turnedAround == false) {
 		
-	//		this.transform.rotation = Quaternion.LookRotation (secondDirectionBoundary.transform.position - transform.position, Vector3.up);
+			this.transform.rotation = Quaternion.LookRotation (secondDirectionBoundary.transform.position - transform.position, Vector3.up);
 
-	//		walkDirection = walkDirection * -1f;
-	//		turnedAround = true;
+			//walkDirection = walkDirection * -1f;
+			walkDirection = secondDirectionBoundary.transform.position - transform.position;
+			turnedAround = true;
 
-	//		Debug.Log ("This is the starting boundary!");
-	//	}
+			Debug.Log ("This is the starting boundary!");
+		}
 
-	//	if (col.gameObject.tag == "Whomp Second Boundary"
-	//		&& turnedAround == false) {
+		if (col.gameObject.tag == "Whomp Second Boundary"
+			&& turnedAround == false) {
 
-	//		this.transform.rotation = Quaternion.LookRotation (startingDirectionBoundary.transform.position - transform.position, Vector3.up);
+			this.transform.rotation = Quaternion.LookRotation (startingDirectionBoundary.transform.position - transform.position, Vector3.up);
 
-	//		walkDirection = walkDirection * -1f;
-	//		turnedAround = true;
+			//walkDirection = walkDirection * -1f;
+			walkDirection = startingDirectionBoundary.transform.position - transform.position;
+			turnedAround = true;
 
-	//		Debug.Log ("This is the second boundary!");
-	//	}
+			Debug.Log ("This is the second boundary!");
+		}
 	}
 }
