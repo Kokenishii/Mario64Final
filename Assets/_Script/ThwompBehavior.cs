@@ -58,6 +58,14 @@ public class ThwompBehavior : MonoBehaviour
 	void Update ()
 	{
 
+		//STEP 1: Define ray
+		Ray thwompDetectionRay = new Ray(transform.position, new Vector3(0, -1, 0));
+
+		//STEP 2: Declare raycast distance
+		float rayDistance = 2f;
+
+		//STEP 3: Visualize the raycast
+		Debug.DrawRay(thwompDetectionRay.origin, thwompDetectionRay.direction * rayDistance, Color.green);
 
 		//If the Thwomp is wating to drop
 		if (currentState == ThwompState.waitingToFall) {
