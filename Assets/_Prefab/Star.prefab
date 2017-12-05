@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33840767939148298}
   - component: {fileID: 65442265172419138}
   - component: {fileID: 23078206795791042}
-  - component: {fileID: 114742838805826184}
+  - component: {fileID: 114197223998805442}
   m_Layer: 0
   m_Name: Star
   m_TagString: Star
@@ -36,13 +36,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1647284924108016}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3167, y: 4.07, z: 5.029083}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -9.811668, y: 0.63034403, z: -2.1783187}
   m_LocalScale: {x: 0.24608082, y: 0.24608082, z: 0.24608082}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!23 &23078206795791042
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -96,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114742838805826184
+--- !u!114 &114197223998805442
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -104,6 +104,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1647284924108016}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 0f0c84eaf76ecbb46b96087d00370f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: -800

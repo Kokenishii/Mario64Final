@@ -41,7 +41,6 @@ public class WhompPlayerDetection : MonoBehaviour {
 		//Makes sure that it is the player that this object has collided with
 		if (col.gameObject.tag == "Player") {
 			WhompBehavior.instance.playerDetected = false;
-			WhompBehavior.instance.currentState = WhompBehavior.WhompState.patrolling;
 		}
 	}
 }

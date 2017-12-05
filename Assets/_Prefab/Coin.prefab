@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33368020465087496}
   - component: {fileID: 136551899158131394}
   - component: {fileID: 23715310109798700}
+  - component: {fileID: 114051487176553146}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Coin
@@ -202,7 +203,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1452048313710776}
-  m_LocalRotation: {x: -0.50000006, y: -0.50000006, z: 0.5, w: 0.5}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.337138, y: 0.2074508, z: 0.2074508}
   m_Children:
@@ -213,7 +214,7 @@ Transform:
   - {fileID: 4744333356344876}
   m_Father: {fileID: 4424150613045312}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: -90.00001}
 --- !u!4 &4336619161021206
 Transform:
   m_ObjectHideFlags: 1
@@ -260,14 +261,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1259290634030120}
-  m_LocalRotation: {x: 0.50000006, y: 0.50000006, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 3.0040162, y: 0.5000001, z: -7.0426774}
+  m_LocalRotation: {x: -0.49999985, y: 0.5000002, z: 0.5000002, w: 0.49999985}
+  m_LocalPosition: {x: -9.305575, y: 0.5056604, z: -5.664823}
   m_LocalScale: {x: 1, y: 0.088762715, z: 1}
   m_Children:
   - {fileID: 4114848184245374}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 270, y: -90.00001, z: -179.99998}
 --- !u!4 &4505372173822882
 Transform:
   m_ObjectHideFlags: 1
@@ -426,7 +427,7 @@ Animator:
   m_GameObject: {fileID: 1452048313710776}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: abc59046db6b3164e8b617b3808666e3, type: 3}
-  m_Controller: {fileID: 9100000, guid: 2cdda634af4f60f4694b4596f75bc27c, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -434,6 +435,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114051487176553146
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1259290634030120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e55d2a76c3ae8b4489a03407540b8b63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: -800
 --- !u!136 &136551899158131394
 CapsuleCollider:
   m_ObjectHideFlags: 1
