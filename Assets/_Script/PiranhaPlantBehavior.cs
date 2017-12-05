@@ -83,6 +83,10 @@ public class PiranhaPlantBehavior : MonoBehaviour
 			//Makes the plant to rotate to face the player whenthe player is in proximity to it
 			piranhaPlantHead.transform.rotation = Quaternion.LookRotation (player.transform.position - transform.position, Vector3.up);
 
+			//Quaternion dude = Quaternion.LookRotation (player.transform.position - transform.position, Vector3.up);
+			//Vector3 dudeV3 = dude.eulerAngles;
+			//piranhaPlantHead.transform.Rotate (new Vector3 (0f, dudeV3.y, 0f));
+
 			//If the player gets far away enough, the plant will return to sleep
 			if (Vector3.Distance (player.transform.position, this.transform.position) > distanceToSleep) {
 
