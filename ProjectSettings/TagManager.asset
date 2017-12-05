@@ -8,6 +8,7 @@ TagManager:
   - Red Coin
   - Star
   - Thwomp
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
