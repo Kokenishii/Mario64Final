@@ -66,13 +66,13 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 		}
 
 		//Checks to see if the player has died
-		if (power == 0) {
+        if (power == 0 || power < 0) {
 			lives--;
 			power = 8;
 			Debug.Log ("You died!");
 
 			//Reloads the level (the current number of lives will carry over)
-			SceneManager.LoadScene ("WhompFortress");
+			SceneManager.LoadScene (0);
 		}
 
 		//Checks to see if the player has lost all their lives
