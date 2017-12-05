@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class PlayerGrounding : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	//Checks if the player is inside a moving platform's trigger hitbox, and if so, makes the player a child of the moving platform until they exit the trigger hitbox.
 
 	void OnTriggerStay(Collider col)
 	{
