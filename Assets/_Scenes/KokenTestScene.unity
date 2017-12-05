@@ -117,17 +117,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1094718356582054, guid: e480b9f4dd229429f827e9c1783eabf3,
     type: 2}
   m_PrefabInternal: {fileID: 1996236042}
---- !u!114 &707100741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 707100740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 946a13f84a26084469f4852d34dd98aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &740254297
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,76 +455,6 @@ Prefab:
     - target: {fileID: 4108905402545448, guid: e480b9f4dd229429f827e9c1783eabf3, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114310398124315960, guid: e480b9f4dd229429f827e9c1783eabf3,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114629429057220782, guid: e480b9f4dd229429f827e9c1783eabf3,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 54674555981489378, guid: e480b9f4dd229429f827e9c1783eabf3,
-        type: 2}
-      propertyPath: m_Mass
-      value: 0.0000001
-      objectReference: {fileID: 0}
-    - target: {fileID: 54674555981489378, guid: e480b9f4dd229429f827e9c1783eabf3,
-        type: 2}
-      propertyPath: m_AngularDrag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 54674555981489378, guid: e480b9f4dd229429f827e9c1783eabf3,
-        type: 2}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114673670219827208, guid: e480b9f4dd229429f827e9c1783eabf3,
-        type: 2}
-      propertyPath: moveSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 65465657042545204, guid: e480b9f4dd229429f827e9c1783eabf3,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114673670219827208, guid: e480b9f4dd229429f827e9c1783eabf3,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114673670219827208, guid: e480b9f4dd229429f827e9c1783eabf3,
-        type: 2}
-      propertyPath: crouchJumpDistance
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114673670219827208, guid: e480b9f4dd229429f827e9c1783eabf3,
-        type: 2}
-      propertyPath: crouchMultiplier
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114673670219827208, guid: e480b9f4dd229429f827e9c1783eabf3,
-        type: 2}
-      propertyPath: crouchJumpHeight
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114673670219827208, guid: e480b9f4dd229429f827e9c1783eabf3,
-        type: 2}
-      propertyPath: gravity
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114673670219827208, guid: e480b9f4dd229429f827e9c1783eabf3,
-        type: 2}
-      propertyPath: jumpForce
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114673670219827208, guid: e480b9f4dd229429f827e9c1783eabf3,
-        type: 2}
-      propertyPath: backFlipSpeed
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e480b9f4dd229429f827e9c1783eabf3, type: 2}
