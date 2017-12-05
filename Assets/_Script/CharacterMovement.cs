@@ -11,6 +11,9 @@ public class CharacterMovement : MonoBehaviour
     //1. Crouching Lerp(Slow down instead of stopping suddenly) Lerp is not working well
     //2. If you keep pressing crouch, jump and jump again, it's not working. Because
     // Vector3 movement = new Vector3();
+    public Animator marioAnimator;
+    public float backFlipSpeed;
+    public Vector3 movement;
     public float moveSpeed;
     public float horizontal;
     public float vertical;
@@ -20,14 +23,14 @@ public class CharacterMovement : MonoBehaviour
     public float jumpForce = 10f;
     // bool crouch = false;
     // Use this for initialization
-    float crouchSpeed;
+    public float crouchSpeed;
 
     [Tooltip("between 0 and 1, recommend:0.9")]
     public float crouchMultiplier=0.9f;
     public float crouchJumpHeight;
     public float crouchJumpDistance;
     public GameObject myCamera;
-
+    Vector3 additionalMove;
     bool takeInput = true;
 
    
@@ -35,6 +38,7 @@ public class CharacterMovement : MonoBehaviour
     void Start()
     {
         crouchSpeed = 1;
+       // marioAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -57,36 +61,48 @@ public class CharacterMovement : MonoBehaviour
         //Using forward and rightward of camera to treat vertical and horizontal axis first
         Vector3 forwardMovement = Camera.main.transform.forward * vertical;
         Vector3 rightMovement = Camera.main.transform.right * horizontal;
-        Vector3 movement = forwardMovement + rightMovement;
+         movement = forwardMovement + rightMovement;
 
 
         transform.forward = Vector3.Lerp(transform.forward, new Vector3(movement.x, 0, movement.z), 0.7f);
         //roate the character to wherever it is facing
         
-        if(Mathf.Abs(horizontal) >=0.9|| Mathf.Abs(vertical) >=0.9)
-        {
-            if(Input.GetButtonDown("Punch"))
-            {
-                jumpSpeed = 0.5f * jumpForce;
-                //movement *= 3;
-                crouchSpeed *= crouchJumpDistance;
-                print("longpunch");
-            }
-        }
-        else if(Input.GetButtonDown("Punch"))
-        {
-            print("normal Punch");
-        }
-
+        
         if (myCharacterController.isGrounded)
         {
+            marioAnimator.SetBool("isJumping", false);
+            marioAnimator.SetBool("isLongJumping", false);
+            marioAnimator.SetBool("isCrouching", false);
+            additionalMove = Vector3.zero;
+            if (Mathf.Abs(horizontal) >= 0.9 || Mathf.Abs(vertical) >= 0.9)
+            {
+                if (Input.GetButtonDown("Punch"))
+                {
+                    jumpSpeed = 0.5f * jumpForce;
+                    //movement *= 3;
+                    crouchSpeed *= crouchJumpDistance;
+                    print("longpunch");
+                }
+            }
+            else
+            {
+                if (Input.GetButtonDown("Punch"))
+                {
+                    print("normal Punch");
+                }
+            }
+
             //jumpSpeed -= gravity * Time.deltaTime;
             if (Input.GetButton("Crouch"))
             {
-                //crouch
-                crouchSpeed = Mathf.Lerp(crouchSpeed, 0, crouchMultiplier * Time.deltaTime);
-               // print("crouching");
-                if(Input.GetButtonDown("Punch"))
+                marioAnimator.SetBool("isCrouching", true);
+
+                // additionalMove = -transform.forward * backFlipSpeed * Time.deltaTime;
+                 crouchSpeed = Mathf.Lerp(crouchSpeed, 0, crouchMultiplier * Time.deltaTime);
+                 
+
+                // print("crouching");
+                if (Input.GetButtonDown("Punch"))
                 {
                     jumpSpeed = jumpForce * 0.4f;
                     
@@ -94,15 +110,43 @@ public class CharacterMovement : MonoBehaviour
                 }
               // StartCoroutine(crouchEnd());
                 
-
+   //Press Jump >>
                 if (Input.GetButtonDown("Jump"))
                 {
-                   
+    //Press Jump >> don't move, you back flip    
+               
+                    if (Mathf.Abs(horizontal) <= 0.1f && Mathf.Abs(vertical) <= 0.1f)
+                    {
+                        jumpSpeed = 1.2f * jumpForce;
+                      
+                        crouchSpeed = 1;
+
+                        additionalMove = -transform.forward * backFlipSpeed * Time.deltaTime;
+
+                        print("backflip??");
+                        // StartCoroutine(Backflip());
+                     
+                    }
+
+                    else
+                    {
                         jumpSpeed = crouchJumpHeight * jumpForce;
                         crouchSpeed *= crouchJumpDistance;
-                    print("long jump");
+                        marioAnimator.SetBool("isLongJumping", true);
+                        print("long jump");
+                    }
+                    
+                                           
+                    
+                       
+                    
+               
                    
 
+                }
+                else
+                {
+                    //crouchSpeed = 1;
                 }
 
             }
@@ -114,6 +158,8 @@ public class CharacterMovement : MonoBehaviour
 
                 if (Input.GetButtonDown("Jump"))
                 {
+                    marioAnimator.SetBool("isRunning", false);
+                    marioAnimator.SetBool("isJumping", true);
                     jumpSpeed = jumpForce;
                     print("normal jump");
 
@@ -127,6 +173,7 @@ public class CharacterMovement : MonoBehaviour
         else
         //If jump is not grounded,keep adding gravity to jumpspeed
         {
+           // additionalMove = Vector3.zero;
 
             jumpSpeed -= gravity * Time.deltaTime;
             if(Input.GetButtonDown("Punch"))
@@ -134,14 +181,19 @@ public class CharacterMovement : MonoBehaviour
                 jumpSpeed -= 6f;
                 print("grounchPunch");
             }
+          
         }
 
         //movement.y equals jumpspeed, which takes into gravity/jumping/high jumping, etc
+   
         movement.x *= moveSpeed *crouchSpeed * Time.deltaTime;
         movement.z *= moveSpeed * crouchSpeed *Time.deltaTime;
         movement.y = jumpSpeed*moveSpeed*Time.deltaTime;
-
-        myCharacterController.Move(movement );
+        if(movement.magnitude>0)
+        {
+           marioAnimator.SetBool("isRunning", true);
+        }
+        myCharacterController.Move(movement+additionalMove);
 
         //if(Input.GetKey(KeyCode.W))
         //{
@@ -150,14 +202,18 @@ public class CharacterMovement : MonoBehaviour
         //
 
     }
-    IEnumerator crouchEnd()
+    IEnumerator Backflip()
     {
+
         yield return 0;
-       
+
+
     }
     IEnumerator longJump()
     {
         yield return 0;
 
     }
+
+  
 }
