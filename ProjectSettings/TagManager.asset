@@ -9,6 +9,8 @@ TagManager:
   - Star
   - Thwomp
   - MovingPlatform
+  - Whomp Starting Boundary
+  - Whomp Second Boundary
   layers:
   - Default
   - TransparentFX
