@@ -91,11 +91,11 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _SideScale: 0.4
+    - _SideScale: 0.2
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TopScale: 0.2
+    - _TopScale: 0.1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
