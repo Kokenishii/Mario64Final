@@ -405,6 +405,26 @@ Prefab:
       propertyPath: mario
       value: 
       objectReference: {fileID: 707100740}
+    - target: {fileID: 114775987162302146, guid: ef52210fc0c45489091e232cea7b31cb,
+        type: 2}
+      propertyPath: mario
+      value: 
+      objectReference: {fileID: 707100740}
+    - target: {fileID: 114663034783974352, guid: ef52210fc0c45489091e232cea7b31cb,
+        type: 2}
+      propertyPath: mario
+      value: 
+      objectReference: {fileID: 707100740}
+    - target: {fileID: 114775987162302146, guid: ef52210fc0c45489091e232cea7b31cb,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114663034783974352, guid: ef52210fc0c45489091e232cea7b31cb,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ef52210fc0c45489091e232cea7b31cb, type: 2}
   m_IsPrefabParent: 0
@@ -490,17 +510,27 @@ Prefab:
     - target: {fileID: 114673670219827208, guid: e480b9f4dd229429f827e9c1783eabf3,
         type: 2}
       propertyPath: crouchJumpDistance
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114673670219827208, guid: e480b9f4dd229429f827e9c1783eabf3,
         type: 2}
       propertyPath: crouchMultiplier
-      value: 0.95
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 114673670219827208, guid: e480b9f4dd229429f827e9c1783eabf3,
         type: 2}
       propertyPath: crouchJumpHeight
-      value: 1
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114673670219827208, guid: e480b9f4dd229429f827e9c1783eabf3,
+        type: 2}
+      propertyPath: gravity
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114673670219827208, guid: e480b9f4dd229429f827e9c1783eabf3,
+        type: 2}
+      propertyPath: jumpForce
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e480b9f4dd229429f827e9c1783eabf3, type: 2}

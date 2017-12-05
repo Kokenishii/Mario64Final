@@ -24,7 +24,7 @@ public class NewCameraControl : MonoBehaviour {
             Cursor.lockState = CursorLockMode.Locked;
 
         }
-        Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
+        //Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
             if (Camera.main.fieldOfView > 20)
