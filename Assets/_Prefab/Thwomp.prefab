@@ -211,8 +211,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 2
-  secondsToDrop: 1.5
-  secondsToRise: 2
+  secondsToDrop: 1
+  secondsToRise: 1.2
   dropSpeed: 15
   risingSpeed: 6
 --- !u!114 &114792706641721610
