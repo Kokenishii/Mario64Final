@@ -21,6 +21,7 @@ public class DamageSourceScript : MonoBehaviour {
 
 			PlayerHealthAndPickups.Instance.power--;
 			Debug.Log ("Power: " + PlayerHealthAndPickups.Instance.power);
+            ScreenShake.shakeStrength = 1f;
 		}
 	}
 }
