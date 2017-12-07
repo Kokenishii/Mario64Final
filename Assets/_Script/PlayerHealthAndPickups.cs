@@ -67,9 +67,12 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 			powerMeter.SetActive (false);
             powerSprite.SetActive(false);
 		}
-
+        if (power < 0)
+        {
+            power = 0;
+        }
 		//Checks to see if the player has died
-        if (power <= 0) {
+        if (power == 0) {
 			lives--;
 			power = 8;
 			Debug.Log ("You died!");
