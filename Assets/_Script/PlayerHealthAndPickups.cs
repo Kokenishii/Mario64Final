@@ -20,7 +20,8 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 	public GameObject powerMeter;
     public Sprite[] powerMeterImages = new Sprite[9];
     public GameObject powerSprite;
-   
+	public ParticleSystem coinParticles;
+	public ParticleSystem starParticles;
 
 	//Creates a Singleton, something that other pieces of code can reference 
 	//to change values in this script
@@ -94,6 +95,10 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 		if (col.gameObject.tag == "Star") {
 			stars++;
 			Destroy (col.gameObject);
+
+			ParticleSystem sp = Instantiate (starParticles, col.transform.position, Quaternion.identity);
+			Destroy (sp, 1f);
+
 			Debug.Log ("You win!");
 		}
 
@@ -109,6 +114,10 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 			Debug.Log ("Power: " + power);
 
 			Destroy (col.gameObject);
+
+			ParticleSystem cp = Instantiate (coinParticles, col.transform.position, Quaternion.identity);
+			Destroy (cp, 1f);
+
 		}
 
 		//Checks to see if the player has collected a red coin
@@ -125,6 +134,9 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 			Debug.Log("Red Coins Collected: " + redCoinCount);
 
 			Destroy (col.gameObject);
+
+			ParticleSystem cp = Instantiate (coinParticles, col.transform.position, Quaternion.identity);
+			Destroy (cp, 1f);
 	}
 }
     void Healthbar(){
