@@ -82,7 +82,7 @@ public class CharacterMovement : MonoBehaviour
         if (myCharacterController.isGrounded)
         {
            
-           marioAnimator.SetBool("isDiving", false);
+          
             marioAnimator.SetBool("isGroundPounding", false);
             //marioAnimator.SetBool("isStanding", true);
             marioAnimator.SetBool("isJumping", false);
@@ -99,8 +99,10 @@ public class CharacterMovement : MonoBehaviour
                    
                     jumpSpeed = 0.5f * jumpForce;
                     //movement *= 3;
-                    crouchSpeed *= 1.5f*  crouchJumpDistance;
+                    //  crouchSpeed *= 4f*  crouchJumpDistance
+                    additionalMove = transform.forward * 10f * Time.deltaTime;
                     marioAnimator.SetBool("isDiving", true);
+                    StartCoroutine(DivingEnd());
                     print("longpunch");
 
                 }
@@ -197,19 +199,29 @@ public class CharacterMovement : MonoBehaviour
 
 
         }
-        else
+        else //IN THE AIR
         //If jump is not grounded,keep adding gravity to jumpspeed
         {
            // additionalMove = Vector3.zero;
 
             jumpSpeed -= gravity * Time.deltaTime;
-            if(Input.GetButtonDown("Punch"))
+            if(Input.GetButtonDown("Crouch"))
             {
                 marioAnimator.SetBool("isGroundPounding", true);
                 jumpSpeed -= 6f;
                 print("grounchPunch");
             }
-          
+            if (Input.GetButtonDown("Punch"))
+            {
+                jumpSpeed = 0.5f * jumpForce;
+                //movement *= 3;
+                //  crouchSpeed *= 4f*  crouchJumpDistance
+                additionalMove = transform.forward * 10f * Time.deltaTime;
+                marioAnimator.SetBool("isDiving", true);
+                StartCoroutine(DivingEnd());
+                print("longpunchair");
+            }
+
         }
 
         //movement.y equals jumpspeed, which takes into gravity/jumping/high jumping, etc
@@ -239,6 +251,11 @@ public class CharacterMovement : MonoBehaviour
     {
         yield return 0;
 
+    }
+    IEnumerator DivingEnd()
+    {
+        yield return new WaitForSeconds(1.5f);
+        marioAnimator.SetBool("isDiving", false);
     }
 
   
