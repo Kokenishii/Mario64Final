@@ -11,6 +11,7 @@ public class CharacterMovement : MonoBehaviour
     //1. Crouching Lerp(Slow down instead of stopping suddenly) Lerp is not working well
     //2. If you keep pressing crouch, jump and jump again, it's not working. Because
     // Vector3 movement = new Vector3();
+   
     public Animator marioAnimator;
     public float backFlipSpeed;
     public Vector3 movement;
@@ -62,7 +63,7 @@ public class CharacterMovement : MonoBehaviour
         Vector3 forwardMovement = Camera.main.transform.forward * vertical;
         Vector3 rightMovement = Camera.main.transform.right * horizontal;
          movement = forwardMovement + rightMovement;
-
+        marioAnimator.SetFloat("runSpeed", movement.magnitude*1.2f );
 
         transform.forward = Vector3.Lerp(transform.forward, new Vector3(movement.x, 0, movement.z), 0.7f);
         //roate the character to wherever it is facing
@@ -70,9 +71,11 @@ public class CharacterMovement : MonoBehaviour
         
         if (myCharacterController.isGrounded)
         {
+            //marioAnimator.SetBool("isStanding", true);
             marioAnimator.SetBool("isJumping", false);
             marioAnimator.SetBool("isLongJumping", false);
             marioAnimator.SetBool("isCrouching", false);
+            marioAnimator.SetBool("isBackflipping", false);
             additionalMove = Vector3.zero;
             if (Mathf.Abs(horizontal) >= 0.9 || Mathf.Abs(vertical) >= 0.9)
             {
@@ -122,7 +125,7 @@ public class CharacterMovement : MonoBehaviour
                         crouchSpeed = 1;
 
                         additionalMove = -transform.forward * backFlipSpeed * Time.deltaTime;
-
+                        marioAnimator.SetBool("isBackflipping", true);
                         print("backflip??");
                         // StartCoroutine(Backflip());
                      
@@ -189,9 +192,17 @@ public class CharacterMovement : MonoBehaviour
         movement.x *= moveSpeed *crouchSpeed * Time.deltaTime;
         movement.z *= moveSpeed * crouchSpeed *Time.deltaTime;
         movement.y = jumpSpeed*moveSpeed*Time.deltaTime;
-        if(movement.magnitude>0)
+       // print(movement.magnitude);
+        if(movement.x==0&&movement.z==0)
         {
-           marioAnimator.SetBool("isRunning", true);
+            marioAnimator.SetBool("isRunning", false);
+            marioAnimator.SetBool("isStanding", true);
+
+        }
+        else
+        {
+            marioAnimator.SetBool("isRunning", true);
+            marioAnimator.SetBool("isStanding", false);
         }
         myCharacterController.Move(movement+additionalMove);
 

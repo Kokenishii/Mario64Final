@@ -353,7 +353,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Backflip
       takeName: Take 001
-      firstFrame: 330
+      firstFrame: 330.44
       lastFrame: 349
       wrapMode: 0
       orientationOffsetY: 0
