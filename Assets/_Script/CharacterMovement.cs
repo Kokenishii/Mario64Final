@@ -67,32 +67,56 @@ public class CharacterMovement : MonoBehaviour
 
         transform.forward = Vector3.Lerp(transform.forward, new Vector3(movement.x, 0, movement.z), 0.7f);
         //roate the character to wherever it is facing
-        
-        
+        if (movement.x == 0 && movement.z == 0)
+        {
+            marioAnimator.SetBool("isRunning", false);
+            marioAnimator.SetBool("isStanding", true);
+
+        }
+        else
+        {
+            marioAnimator.SetBool("isRunning", true);
+            marioAnimator.SetBool("isStanding", false);
+        }
+
         if (myCharacterController.isGrounded)
         {
+           
+           marioAnimator.SetBool("isDiving", false);
+            marioAnimator.SetBool("isGroundPounding", false);
             //marioAnimator.SetBool("isStanding", true);
             marioAnimator.SetBool("isJumping", false);
             marioAnimator.SetBool("isLongJumping", false);
             marioAnimator.SetBool("isCrouching", false);
             marioAnimator.SetBool("isBackflipping", false);
             additionalMove = Vector3.zero;
+            crouchSpeed = 1;
             if (Mathf.Abs(horizontal) >= 0.9 || Mathf.Abs(vertical) >= 0.9)
             {
                 if (Input.GetButtonDown("Punch"))
                 {
+                   
+                   
                     jumpSpeed = 0.5f * jumpForce;
                     //movement *= 3;
-                    crouchSpeed *= crouchJumpDistance;
+                    crouchSpeed *= 1.5f*  crouchJumpDistance;
+                    marioAnimator.SetBool("isDiving", true);
                     print("longpunch");
+
                 }
             }
             else
             {
                 if (Input.GetButtonDown("Punch"))
                 {
-                    print("normal Punch");
+                    marioAnimator.SetTrigger("isPunchingTrigger");
+                    if (Input.GetButtonDown("Punch"))
+                    {
+                        print("normal Punch");
+                    }
                 }
+                // marioAnimator.SetBool("isPunching", true);
+              
             }
 
             //jumpSpeed -= gravity * Time.deltaTime;
@@ -103,7 +127,7 @@ public class CharacterMovement : MonoBehaviour
                 // additionalMove = -transform.forward * backFlipSpeed * Time.deltaTime;
                  crouchSpeed = Mathf.Lerp(crouchSpeed, 0, crouchMultiplier * Time.deltaTime);
                  
-
+             
                 // print("crouching");
                 if (Input.GetButtonDown("Punch"))
                 {
@@ -181,6 +205,7 @@ public class CharacterMovement : MonoBehaviour
             jumpSpeed -= gravity * Time.deltaTime;
             if(Input.GetButtonDown("Punch"))
             {
+                marioAnimator.SetBool("isGroundPounding", true);
                 jumpSpeed -= 6f;
                 print("grounchPunch");
             }
@@ -192,18 +217,8 @@ public class CharacterMovement : MonoBehaviour
         movement.x *= moveSpeed *crouchSpeed * Time.deltaTime;
         movement.z *= moveSpeed * crouchSpeed *Time.deltaTime;
         movement.y = jumpSpeed*moveSpeed*Time.deltaTime;
-       // print(movement.magnitude);
-        if(movement.x==0&&movement.z==0)
-        {
-            marioAnimator.SetBool("isRunning", false);
-            marioAnimator.SetBool("isStanding", true);
-
-        }
-        else
-        {
-            marioAnimator.SetBool("isRunning", true);
-            marioAnimator.SetBool("isStanding", false);
-        }
+        // print(movement.magnitude);
+        
         myCharacterController.Move(movement+additionalMove);
 
         //if(Input.GetKey(KeyCode.W))
