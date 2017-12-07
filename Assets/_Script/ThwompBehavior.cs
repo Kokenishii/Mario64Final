@@ -65,7 +65,7 @@ public class ThwompBehavior : MonoBehaviour
 		float rayDistance = 2f;
 
 		//STEP 3: Visualize the raycast
-		Debug.DrawRay(thwompDetectionRay.origin, thwompDetectionRay.direction * rayDistance, Color.green);
+		Debug.DrawRay(thwompDetectionRay.origin, thwompDetectionRay.direction * rayDistance, Color.yellow);
 
 		//If the Thwomp is wating to drop
 		if (currentState == ThwompState.waitingToFall) {
@@ -156,23 +156,23 @@ public class ThwompBehavior : MonoBehaviour
 
 
 
-	void OnTriggerEnter (Collider col)
-	{
+	//void OnTriggerEnter (Collider col)
+	//{
 
 
 		//Makes sure that it is the player that this object has collided with
-		if (col.gameObject.tag == "Player") {
+	//	if (col.gameObject.tag == "Player") {
 
 			//Checks to make sure the Thwomp hasn't already damaged the player in this cycle of it's movement.
 			//Prevents it from dealing damage on every frame of collision.
-			if (didDamage == false) {
+	//		if (didDamage == false) {
 			
 				//Does three points of damage to the player
-				PlayerHealthAndPickups.Instance.power -= 3;
+	//			PlayerHealthAndPickups.Instance.power -= 3;
 
 				//Ensures that this Thwomp can't damage the player again until it falls another time
-				didDamage = true;
-			}
-		}
-	}
+	//			didDamage = true;
+	//		}
+	//	}
+	//}
 }
