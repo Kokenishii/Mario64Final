@@ -211,7 +211,7 @@ public class CharacterMovement : MonoBehaviour
                 jumpSpeed -= 6f;
                 print("grounchPunch");
             }
-            if (Input.GetButtonDown("Punch"))
+            if (Input.GetButtonDown("Punch")&&marioAnimator.GetBool("isDiving")==false)
             {
                 jumpSpeed = 0.5f * jumpForce;
                 //movement *= 3;
