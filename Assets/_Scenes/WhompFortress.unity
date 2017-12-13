@@ -5271,12 +5271,12 @@ Prefab:
     - target: {fileID: 224601035923612144, guid: f6ad193a04d324b619c4c5325e6fb9bf,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 524
+      value: 224.5
       objectReference: {fileID: 0}
     - target: {fileID: 224601035923612144, guid: f6ad193a04d324b619c4c5325e6fb9bf,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 295
+      value: 140.5
       objectReference: {fileID: 0}
     - target: {fileID: 224601035923612144, guid: f6ad193a04d324b619c4c5325e6fb9bf,
         type: 2}
@@ -6095,7 +6095,7 @@ GameObject:
   - component: {fileID: 1338782056}
   m_Layer: 0
   m_Name: Cube (56)
-  m_TagString: Untagged
+  m_TagString: SlidingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6710,6 +6710,11 @@ Prefab:
       propertyPath: powerSprite
       value: 
       objectReference: {fileID: 1136140200}
+    - target: {fileID: 143875023436824786, guid: e480b9f4dd229429f827e9c1783eabf3,
+        type: 2}
+      propertyPath: m_SlopeLimit
+      value: 45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e480b9f4dd229429f827e9c1783eabf3, type: 2}
   m_IsPrefabParent: 0
@@ -8694,7 +8699,7 @@ GameObject:
   - component: {fileID: 1948176152}
   m_Layer: 0
   m_Name: Cube (23)
-  m_TagString: Untagged
+  m_TagString: SlidingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
