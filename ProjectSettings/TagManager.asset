@@ -11,6 +11,7 @@ TagManager:
   - MovingPlatform
   - Whomp Starting Boundary
   - Whomp Second Boundary
+  - SlidingPlatform
   layers:
   - Default
   - TransparentFX

@@ -262,7 +262,7 @@ public class WhompBehavior : MonoBehaviour
 	void OnTriggerEnter (Collider col)
 	{
 
-		Debug.Log ("COLLIDED!!!");
+		//Debug.Log ("COLLIDED!!!");
 
 		//if you collide with this or this, reverse direction & head towards the other target
 
