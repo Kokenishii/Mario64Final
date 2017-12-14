@@ -1,6 +1,6 @@
 //Maya ASCII 2018 scene
 //Name: PiranhaPlant.ma
-//Last modified: Thu, Dec 14, 2017 09:41:32 AM
+//Last modified: Thu, Dec 14, 2017 10:21:39 AM
 //Codeset: 936
 requires maya "2018";
 currentUnit -l centimeter -a degree -t film;
@@ -13,13 +13,13 @@ fileInfo "license" "student";
 createNode transform -s -n "persp";
 	rename -uid "B3144847-4D95-41D6-CCF9-78A1C5214F66";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 31.326597232173064 25.133161986951592 -0.32806335122828822 ;
-	setAttr ".r" -type "double3" -38.738352729577905 -269.40000000001663 0 ;
+	setAttr ".t" -type "double3" 21.851817348732212 30.359506183515148 -63.462285641136745 ;
+	setAttr ".r" -type "double3" -24.338352729568161 -199.00000000001296 0 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "09168887-46EA-BDFA-40BE-96BD318A53C4";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 40.163903584832291;
+	setAttr ".coi" 73.665889229321863;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
