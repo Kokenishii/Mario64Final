@@ -36,12 +36,13 @@ public class CharacterMovement : MonoBehaviour
     Vector3 additionalMove;
     bool takeInput = true;
     bool isLanded;
-   
+    bool canJump;
    
     void Start()
     {
         crouchSpeed = 1;
-       // marioAnimator = GetComponent<Animator>();
+        // marioAnimator = GetComponent<Animator>();
+        canJump = true;
     }
 
     // Update is called once per frame
@@ -116,10 +117,10 @@ public class CharacterMovement : MonoBehaviour
             crouchSpeed = 1;
             if (Mathf.Abs(horizontal) >= 0.9 || Mathf.Abs(vertical) >= 0.9)
             {
-                if (Input.GetButtonDown("Punch") && !isSlidingDown)
+                if (Input.GetButtonDown("Punch") && !isSlidingDown && canJump )
                 {
-                   
-                   
+                    canJump = false;
+                    //StartCoroutine(adjustJump());
                     jumpSpeed = 0.5f * jumpForce;
                     //movement *= 3;
                     //  crouchSpeed *= 4f*  crouchJumpDistance
@@ -208,7 +209,7 @@ public class CharacterMovement : MonoBehaviour
                 crouchSpeed = 1;
                 //reset crouch speed to 1 (normal running)
 
-                if (Input.GetButtonDown("Jump") && !isSlidingDown)
+                if (Input.GetButtonDown("Jump") && !isSlidingDown &&canJump)
                 {
                     //[[[[[[JUMPING]]]]]// CALLED when JUMPING STARTS
 
@@ -242,8 +243,9 @@ public class CharacterMovement : MonoBehaviour
                 jumpSpeed -= 6f;
                 print("grounchPunch");
             }
-            if (Input.GetButtonDown("Punch")&&marioAnimator.GetBool("isDiving")==false)
+            if (Input.GetButtonDown("Punch")&&marioAnimator.GetBool("isDiving")==false&&canJump)
             {
+                canJump = false;
                 jumpSpeed = 0.5f * jumpForce;
                 //movement *= 3;
                 //  crouchSpeed *= 4f*  crouchJumpDistance
@@ -292,12 +294,18 @@ public class CharacterMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         marioAnimator.SetBool("isDiving", false);
+        StartCoroutine(adjustJump());
     }
 
     IEnumerator startSliding()
     {
         yield return new WaitForSeconds(0.2f);
         isSlidingDown = false;
+    }
+    IEnumerator adjustJump()
+    {
+        yield return new WaitForSeconds(1f);
+        canJump = true;
     }
 
     void OnTriggerEnter(Collider col)
@@ -330,6 +338,7 @@ public class CharacterMovement : MonoBehaviour
       //  print("landed!");
 
         isLanded = true;
+        
       
     }
 
