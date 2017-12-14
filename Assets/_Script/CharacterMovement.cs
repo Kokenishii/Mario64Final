@@ -37,9 +37,13 @@ public class CharacterMovement : MonoBehaviour
     bool takeInput = true;
     bool isLanded;
    
-   
+	public ParticleSystem jumpDust;
+	public AudioClip footstep;
+	AudioSource sound;
+
     void Start()
     {
+		sound = GetComponent<AudioSource> ();
         crouchSpeed = 1;
        // marioAnimator = GetComponent<Animator>();
     }
@@ -66,6 +70,7 @@ public class CharacterMovement : MonoBehaviour
         //roate the character to wherever it is facing
         if (movement.x == 0 && movement.z == 0)
         {
+			sound.Stop ();
             marioAnimator.SetBool("isRunning", false);
             marioAnimator.SetBool("isStanding", true);
 
@@ -79,15 +84,14 @@ public class CharacterMovement : MonoBehaviour
 
 
 
-
-
         if (myCharacterController.isGrounded)
         {
-            //[[[[[[WALKING]]]]]// CALLED when WALING
+            //[[[[[[WALKING]]]]]// CALLED when WALKING
 
-
-
-            //END OF YOUR SCRIPT
+			if (!sound.isPlaying && (movement.x != 0 || movement.z != 0)) {
+				sound.clip = footstep;
+				sound.Play ();
+			}
 
             //[[[[LANDING]]]]/// If you are trying to add something happened ONCE when LANDING,
             // MODIFY THIS FUNCTION AT THE END OF THE SCRIPT
@@ -95,6 +99,8 @@ public class CharacterMovement : MonoBehaviour
             if (!isLanded)
             {
                 Landing();//MODIFY THE LANDING FUNCTION AT THE END
+				ParticleSystem p = Instantiate(jumpDust, new Vector3(transform.position.x, transform.position.y-1, transform.position.z), Quaternion.identity); //When landing, create a dust cloud.
+				Destroy(p.gameObject, 0.5f);
             }
 
 
@@ -147,6 +153,7 @@ public class CharacterMovement : MonoBehaviour
             //jumpSpeed -= gravity * Time.deltaTime;
             if (Input.GetButton("Crouch"))
             {
+				sound.Stop ();
                 marioAnimator.SetBool("isCrouching", true);
 
                 // additionalMove = -transform.forward * backFlipSpeed * Time.deltaTime;
@@ -174,9 +181,13 @@ public class CharacterMovement : MonoBehaviour
                         crouchSpeed = 1;
 
                         additionalMove = -transform.forward * backFlipSpeed * Time.deltaTime;
+						sound.Stop ();
                         marioAnimator.SetBool("isBackflipping", true);
                         print("backflip??");
                         // StartCoroutine(Backflip());
+
+						ParticleSystem p = Instantiate(jumpDust, new Vector3(transform.position.x, transform.position.y-1, transform.position.z), Quaternion.identity);
+						Destroy (p.gameObject, 0.5f);
                      
                     }
 
@@ -184,8 +195,12 @@ public class CharacterMovement : MonoBehaviour
                     {
                         jumpSpeed = crouchJumpHeight * jumpForce;
                         crouchSpeed *= crouchJumpDistance;
+						sound.Stop ();
                         marioAnimator.SetBool("isLongJumping", true);
                         print("long jump");
+
+						ParticleSystem p = Instantiate(jumpDust, new Vector3(transform.position.x, transform.position.y-1, transform.position.z), Quaternion.identity);
+						Destroy (p.gameObject, 0.5f);
                     }
                     
                                            
@@ -212,11 +227,9 @@ public class CharacterMovement : MonoBehaviour
                 {
                     //[[[[[[JUMPING]]]]]// CALLED when JUMPING STARTS
 
-
-
+					sound.Stop ();
 
                     //END OF YOUR SCRIPT
-
                     marioAnimator.SetBool("isRunning", false);
                     marioAnimator.SetBool("isJumping", true);
                     jumpSpeed = jumpForce;
