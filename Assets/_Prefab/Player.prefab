@@ -958,6 +958,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d119ccd4019c7aa4f9182bb92ae32898, type: 3}
   - {fileID: 21300000, guid: a6b8543e76f47724884af117b6cd08f9, type: 3}
   powerSprite: {fileID: 0}
+  coinParticles: {fileID: 198621650955413280, guid: 0a0833c7f86173543bdd2caa7fb7de83,
+    type: 2}
+  starParticles: {fileID: 198351917266475924, guid: f27a0fcf83e308d48a01e95257a763f6,
+    type: 2}
 --- !u!114 &114673670219827208
 MonoBehaviour:
   m_ObjectHideFlags: 1
