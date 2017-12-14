@@ -325,12 +325,12 @@ public class CharacterMovement : MonoBehaviour
 
     IEnumerator startSliding()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         isSlidingDown = false;
     }
     IEnumerator adjustJump()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.2f);
         canJump = true;
     }
 
