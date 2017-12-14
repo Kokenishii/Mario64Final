@@ -948,15 +948,15 @@ MonoBehaviour:
   livesCountText: {fileID: 0}
   powerMeter: {fileID: 0}
   powerMeterImages:
-  - {fileID: 21300000, guid: 2ae5ca307c3814e43a269c8a90ea1017, type: 3}
-  - {fileID: 21300000, guid: c374e1e0800c44198b03a64a49d0453f, type: 3}
-  - {fileID: 21300000, guid: 24fae576e8f654897b42b654136ff8ff, type: 3}
-  - {fileID: 21300000, guid: ea5a64470a5e04ec1a7d67e6dbbe23f1, type: 3}
-  - {fileID: 21300000, guid: d20452663deb44ea1aaf79bf2d755b8c, type: 3}
-  - {fileID: 21300000, guid: 6d64c907a2188449c809679a5acfbdb7, type: 3}
-  - {fileID: 21300000, guid: 9408b8756ef5b4641bc09034da5f435a, type: 3}
-  - {fileID: 21300000, guid: 694308d5c4dd8454bb79d3b780dd8d48, type: 3}
-  - {fileID: 21300000, guid: 20fd341ab3e104a2f962ffbe6d64f855, type: 3}
+  - {fileID: 21300000, guid: d0777b7a8a0f40b46a7798077222e4bc, type: 3}
+  - {fileID: 21300000, guid: b211dede05398d84b984deb4b27b5011, type: 3}
+  - {fileID: 21300000, guid: fba53ce3095ce214fad3cf6b92cd1c1d, type: 3}
+  - {fileID: 21300000, guid: 5eef059524e410a4e806a4ab0453bcca, type: 3}
+  - {fileID: 21300000, guid: 359a0f7588b54154bb6e1e1d906c58b0, type: 3}
+  - {fileID: 21300000, guid: beffd2ba89c14e34f82729e7a03419fa, type: 3}
+  - {fileID: 21300000, guid: 54e536273d5998748a294df6d259f247, type: 3}
+  - {fileID: 21300000, guid: d119ccd4019c7aa4f9182bb92ae32898, type: 3}
+  - {fileID: 21300000, guid: a6b8543e76f47724884af117b6cd08f9, type: 3}
   powerSprite: {fileID: 0}
   coinParticles: {fileID: 198621650955413280, guid: 0a0833c7f86173543bdd2caa7fb7de83,
     type: 2}
