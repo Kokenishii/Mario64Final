@@ -91,6 +91,19 @@ public class WhompBehavior : MonoBehaviour
 	//The animator used to govern the Whomp's animations
 	Animator myAnimator;
 
+	//A rough estiamtion of how long it takes the Whomp to touch the ground After it starts falling,
+	//used to determine when to play the sound that the Whomp makes when it falls
+	public float durationOfFallingAnimation;
+
+	//The audio source associated with the Whomp
+	AudioSource myAudioSource;
+
+	//The sound the Whomp makes when it falls; assigned in the inspector
+	public AudioClip fallingSound;
+
+	//A bool that determines whether or not the Whomp has made a falling sound since it has hit the ground
+	bool madeFallingSound;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -119,6 +132,8 @@ public class WhompBehavior : MonoBehaviour
 		timer = 0f;
 
 		myAnimator = GetComponent<Animator> ();
+
+		myAudioSource = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -173,14 +188,32 @@ public class WhompBehavior : MonoBehaviour
 		//If the Whomp has fallen is waiting to get up
 		if (currentState == WhompState.fell) {
 
-			//Counts up a timer
+			//Counts up a timer, that will be used to determine when the Whomp should do various things during it's "fell" state
 			timer += Time.deltaTime;
+
+			//Makes sure the Whomp has actually hit the ground
+			if (timer > durationOfFallingAnimation) {
+				
+				//Checks to make sure the Whomp hasn't already made this sound since falling
+				if (madeFallingSound == false) {
+
+					//Specifies the sound clip and plays it
+					myAudioSource.clip = fallingSound;
+					myAudioSource.Play ();
+
+					//Ensures that the falling sound won't play again until it is needed
+					madeFallingSound = true;
+				}
+			}
 
 			//When the timer reaches a given publically assigned value, the Whomp begins rising again
 			if (timer >= timeToRiseAgain) {
 
 				//Resets the timer
 				timer = 0f;
+
+				//Allows the Whomp to make the falling sound the next time it falls
+				madeFallingSound = false;
 
 				currentState = WhompState.rising;
 			}
