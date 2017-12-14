@@ -1,6 +1,6 @@
 //Maya ASCII 2018 scene
 //Name: PiranhaPlant.ma
-//Last modified: Thu, Dec 14, 2017 10:21:39 AM
+//Last modified: Thu, Dec 14, 2017 10:39:13 AM
 //Codeset: 936
 requires maya "2018";
 currentUnit -l centimeter -a degree -t film;
@@ -13,13 +13,13 @@ fileInfo "license" "student";
 createNode transform -s -n "persp";
 	rename -uid "B3144847-4D95-41D6-CCF9-78A1C5214F66";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 21.851817348732212 30.359506183515148 -63.462285641136745 ;
-	setAttr ".r" -type "double3" -24.338352729568161 -199.00000000001296 0 ;
+	setAttr ".t" -type "double3" -22.450947353843262 11.835501091791834 -31.129006215944951 ;
+	setAttr ".r" -type "double3" -17.138352729568101 -144.20000000001281 0 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "09168887-46EA-BDFA-40BE-96BD318A53C4";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 73.665889229321863;
+	setAttr ".coi" 40.163903584827608;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -271,49 +271,6 @@ createNode mesh -n "pCylinderShape2" -p "pCylinder2";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
-createNode transform -n "pSphere1";
-	rename -uid "F98072B4-4D04-CF86-5BAD-3E9E73A2699F";
-	setAttr ".t" -type "double3" -3.1499820043531708 7.7867581062209972 -1.1170270722762137 ;
-createNode mesh -n "pSphereShape1" -p "pSphere1";
-	rename -uid "B562CD01-40C6-853E-99F1-A3AD39D0263D";
-	setAttr -k off ".v";
-	setAttr ".vir" yes;
-	setAttr ".vif" yes;
-	setAttr ".uvst[0].uvsn" -type "string" "map1";
-	setAttr ".cuvs" -type "string" "map1";
-	setAttr ".dcc" -type "string" "Ambient+Diffuse";
-	setAttr -s 2 ".clst";
-	setAttr ".clst[0].clsn" -type "string" "SculptFreezeColorTemp";
-	setAttr ".clst[1].clsn" -type "string" "SculptMaskColorTemp";
-	setAttr ".covm[0]"  0 1 1;
-	setAttr ".cdvm[0]"  0 1 1;
-	setAttr -s 382 ".pt";
-	setAttr ".pt[141:306]" -type "float3"  -0.023162365 -0.10428607 -0.013100386 
-		0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-		0 0 0 0 0 0 0 0 0 0 0 0 0 -0.050885677 -0.15061396 0.027714252 -0.051912308 -0.2365799 
-		-0.030313253 -0.0012722015 -0.004543066 0.00046491623 0 0 0 -0.051294267 -0.13200098 
-		0.14854097 0.00018656254 -0.0010235906 0.0053524971 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-		0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -0.083614826 -0.060514569 0.053033464 
-		-0.87435293 -1.3768884 0.65443063 -0.86330748 -1.6704663 0.5705893 -0.71756458 -0.52306205 
-		0.54249597 -0.25246239 -0.13115945 0.21835518 -0.44550249 -1.0020157 1.40571 -0.18044615 
-		-0.051919203 0.50753927 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-		0 0 0 0 0 0 0 0 0 0 -0.49271917 -0.3991183 0.35936299 -3.7615457 -0.76815099 6.8322468 
-		-7.5531483 -3.9665461 5.564086 -4.573276 -2.2336049 2.1138659 -3.4523754 -1.7814548 
-		1.347558 -1.5843374 -1.8414923 1.7045822 -0.0038890839 -0.0053875446 0.078326702 
-		0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -0.0028800964 -0.00056970119 
-		-0.00025892258 -0.30354071 0.059948206 0.28344405 -2.3149674 -0.0083189607 2.7402456 
-		-1.7269623 0.43247092 2.4701324 -2.1664529 0.73390615 2.0195727 -2.6588781 0.19976044 
-		1.2199838 -0.49735332 -0.13652694 0.33687067 -0.01060256 -0.034165978 0.93087626 
-		-0.0014692545 -0.0036268234 0.071644306 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-		0 0 0 0 0 0 0 0 0 0 0 0 -0.0083742142 -0.0016566515 -0.00075316429 -0.47977781 0.084541321 
-		0.4224962 -2.3582675 0.34425652 2.33075 -0.051547527 0.0078921318 0.08357358 -0.056401491 
-		0.0081789494 0.048903704 0 0 0 0 0 0 3.2015344e-06 -0.00032901764 0.0022501945 0 
-		0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -4.7683716e-07 
-		0 3.5762787e-07 -0.0099086761 -0.0008122921 0.0054470301 0 0 0 0 0 0 0 0 0 0 0 0 
-		0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-		0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-		0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-		0 0 0 0 0 0;
 createNode lightLinker -s -n "lightLinker1";
 	rename -uid "16962D86-4BE7-3DDF-4AFC-FBA905A0EAC5";
 	setAttr -s 2 ".lnk";
@@ -384,17 +341,6 @@ createNode script -n "sceneConfigurationScriptNode";
 	rename -uid "C1145135-4A63-D5AF-70DC-9D835305A8B7";
 	setAttr ".b" -type "string" "playbackOptions -min 1 -max 120 -ast 1 -aet 200 ";
 	setAttr ".st" 6;
-createNode polySphere -n "polySphere1";
-	rename -uid "A7173318-4014-68C4-69D2-DAA02AA5BA4A";
-	setAttr ".r" 5.3667394570394293;
-createNode createColorSet -n "createColorSet1";
-	rename -uid "7EC54426-4173-3454-E9E3-85802ED3498E";
-	setAttr ".colos" -type "string" "SculptFreezeColorTemp";
-	setAttr ".clam" no;
-createNode createColorSet -n "createColorSet2";
-	rename -uid "0E623360-4B52-8D52-917D-9A82650DDAF9";
-	setAttr ".colos" -type "string" "SculptMaskColorTemp";
-	setAttr ".clam" no;
 select -ne :time1;
 	setAttr ".o" 1;
 	setAttr ".unw" 1;
@@ -413,7 +359,7 @@ select -ne :postProcessList1;
 	setAttr -s 2 ".p";
 select -ne :defaultRenderingList1;
 select -ne :initialShadingGroup;
-	setAttr -s 3 ".dsm";
+	setAttr -s 2 ".dsm";
 	setAttr ".ro" yes;
 select -ne :initialParticleSE;
 	setAttr ".ro" yes;
@@ -423,17 +369,13 @@ select -ne :hardwareRenderGlobals;
 	setAttr ".ctrs" 256;
 	setAttr ".btrs" 512;
 connectAttr "polyCylinder1.out" "pCylinderShape1.i";
-connectAttr "createColorSet2.og" "pSphereShape1.i";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 connectAttr "layerManager.dli[0]" "defaultLayer.id";
 connectAttr "renderLayerManager.rlmi[0]" "defaultRenderLayer.rlid";
-connectAttr "polySphere1.out" "createColorSet1.ig";
-connectAttr "createColorSet1.og" "createColorSet2.ig";
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
 connectAttr "pCylinderShape1.iog" ":initialShadingGroup.dsm" -na;
 connectAttr "pCylinderShape2.iog" ":initialShadingGroup.dsm" -na;
-connectAttr "pSphereShape1.iog" ":initialShadingGroup.dsm" -na;
 // End of PiranhaPlant.ma

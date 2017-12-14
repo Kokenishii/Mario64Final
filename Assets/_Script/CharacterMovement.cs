@@ -7,11 +7,14 @@ public class CharacterMovement : MonoBehaviour
     //crouch key: shift
     //jump key: space
     //punch key:Mouse0
-  
-        //IF YOU ARE ADDING MOVEMENT RELATED EFFECTS (particles, etc)
-        // Looking for //[[[[[[[[MOVEMENT NAME]]]]]]], I will leave instructions there
-        //e.g. If you want to add effects when the character jumping, looking for [[[[[JUMPING]]]]
 
+    //IF YOU ARE ADDING MOVEMENT RELATED EFFECTS (particles, etc)
+    // Looking for //[[[[[[[[MOVEMENT NAME]]]]]]], I will leave instructions there
+    //e.g. If you want to add effects when the character jumping, looking for [[[[[JUMPING]]]]
+
+    public ParticleSystem jumpDust;
+    public AudioClip footstep;
+    AudioSource sound;
 
     bool isSlidingDown;    
     public Animator marioAnimator;
@@ -370,7 +373,5 @@ public class CharacterMovement : MonoBehaviour
 }
 
 
-	public ParticleSystem jumpDust;
-	public AudioClip footstep;
-	AudioSource sound;
+	
 
