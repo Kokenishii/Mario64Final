@@ -74,6 +74,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: isPunchingTrigger
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -1123,7 +1129,7 @@ AnimatorStateMachine:
     m_Position: {x: 564, y: 228, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102216993972189896}
-    m_Position: {x: 24, y: 168, z: 0}
+    m_Position: {x: -48, y: 204, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102458523765300830}
     m_Position: {x: 48, y: 360, z: 0}
