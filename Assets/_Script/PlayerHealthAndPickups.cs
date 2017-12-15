@@ -77,6 +77,7 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 			lives--;
 			power = 8;
 			Debug.Log ("You died!");
+            MarioVoice.numSoundPlayed4 = 0;
 
 			//Reloads the level (the current number of lives will carry over)
 			SceneManager.LoadScene (0);

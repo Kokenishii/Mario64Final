@@ -29,6 +29,7 @@ public class WhompDamageScript : MonoBehaviour
 
 					//Deals damage
 					PlayerHealthAndPickups.Instance.power -= 3;
+                    ScreenShake.shakeStrength = 1f;
 
 					//Ensures that the Whomp can't deal damage to the player repeatedly over the enxt few frames during this trigger
 					doneDamage = true;
