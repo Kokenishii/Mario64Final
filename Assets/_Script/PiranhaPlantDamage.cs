@@ -44,6 +44,7 @@ public class PiranhaPlantDamage : MonoBehaviour
 
 					//Does three points of damage to the player
 					PlayerHealthAndPickups.Instance.power -= 3;
+                    ScreenShake.shakeStrength = 1f;
 
 					//Makes sure that the plant hasn't done damage to the player in this collision yet
 					//(So that it doesn't do a ton of damage for a bunch of frames in a row to the player

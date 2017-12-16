@@ -25,7 +25,7 @@ public class MarioVoice : MonoBehaviour {
     int numSoundPlayed1 = 0;
     int numSoundPlayed2 = 0;
     int numSoundPlayed3 = 0;
-    int numSoundPlayed4 = 0;
+   public static int numSoundPlayed4 = 0;
 	// Use this for initialization
 	void Start () {
 		
@@ -81,6 +81,7 @@ public class MarioVoice : MonoBehaviour {
         }
         if(ScreenShake.shakeStrength == 1f && numSoundPlayed4 < 1)
             {
+            Debug.Log("didItWork");
                     float randomnumber = Random.value;
                 if (randomnumber <= .25)
                     {
