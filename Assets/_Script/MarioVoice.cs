@@ -150,5 +150,10 @@ public class MarioVoice : MonoBehaviour {
         }
     }
 
+	public void fallToDeath()
+	{
+		marioFalling2.Play ();
+	}
+
 
 }
