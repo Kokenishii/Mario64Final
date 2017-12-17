@@ -9,9 +9,11 @@ using UnityEngine;
 
 public class PiranhaPlantBehavior : MonoBehaviour
 {
+    
 
-	//The different states the Piranha Plant can inhabit
-	public enum PiranhaPlantState
+
+    //The different states the Piranha Plant can inhabit
+    public enum PiranhaPlantState
 	{
 		sleeping,
 		//0
@@ -28,11 +30,14 @@ public class PiranhaPlantBehavior : MonoBehaviour
 	//assigned in the inspector
 	public GameObject piranhaPlantHead;
 
-	//The distance from the center of the Piranha Plant game object
-	//that the player needs to be under in order to wake up the Piranha Plant
-	//and get it to attack,
-	//assigned in the inspector
-	public float distanceToWakeUp;
+    //Koken's change: get the animator for the piranha plant
+    public Animator piranhaPlantAnimator;
+
+    //The distance from the center of the Piranha Plant game object
+    //that the player needs to be under in order to wake up the Piranha Plant
+    //and get it to attack,
+    //assigned in the inspector
+    public float distanceToWakeUp;
 
 	//The distance from the plant the player needs to reach after waking it up
 	//in order to make the plant fall asleep again
@@ -58,7 +63,7 @@ public class PiranhaPlantBehavior : MonoBehaviour
 
 		//The state of the Piranha when it has not detected the player
 		if (currentState == PiranhaPlantState.sleeping) {
-
+            piranhaPlantAnimator.SetBool("isIdling", true);
 			if (Vector3.Distance (player.transform.position, this.transform.position) < distanceToWakeUp) {
 
 				//Checks the speed of the player prevent the plant from responding to the player
@@ -72,16 +77,22 @@ public class PiranhaPlantBehavior : MonoBehaviour
 				if (playerSpeed > speedToWakeUp) {
 
 					Debug.Log ("I'm awake!");
-					currentState = PiranhaPlantState.attacking;
+                  
+                    currentState = PiranhaPlantState.attacking;
 				}
 			}
 		}
 
 		//The state of the Piranha when it has not detected the player
 		if (currentState == PiranhaPlantState.attacking) {
+            piranhaPlantAnimator.SetBool("isAttacking", true);
+            piranhaPlantAnimator.SetBool("isIdling", false);
+            //Makes the plant to rotate to face the player whenthe player is in proximity to it
+            Vector3 plantLookat = transform.position - player.transform.position;
+            plantLookat.y = 0;
+            
 
-			//Makes the plant to rotate to face the player whenthe player is in proximity to it
-			piranhaPlantHead.transform.rotation = Quaternion.LookRotation (player.transform.position - transform.position, Vector3.up);
+            piranhaPlantHead.transform.rotation = Quaternion.LookRotation (plantLookat, Vector3.up);
 
 			//Quaternion dude = Quaternion.LookRotation (player.transform.position - transform.position, Vector3.up);
 			//Vector3 dudeV3 = dude.eulerAngles;
