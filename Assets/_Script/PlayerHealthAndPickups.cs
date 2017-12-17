@@ -49,23 +49,23 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 		}
         Healthbar();
 		//Updates the onscreen lives counter
-		livesCountText.GetComponent<Text>().text = "Lives x " + lives.ToString(); 
+		livesCountText.GetComponent<Text>().text = "x " + lives.ToString(); 
 
 		//Updates the coin score counter
-		coinCountText.GetComponent<Text>().text = "Coins x " + coinScore.ToString();
+		coinCountText.GetComponent<Text>().text = "x " + coinScore.ToString();
 
 		//Updates the onscreen stars counter
-		starCountText.GetComponent<Text>().text = "Stars x " + stars.ToString();
+		starCountText.GetComponent<Text>().text = "x " + stars.ToString();
 
 		//Checks to see if the player's power is less than maximum and
 		//if the power meter should appear onscreen
 		if (power < 8) {
-			powerMeter.SetActive (true);
+			//powerMeter.SetActive (true);
             powerSprite.SetActive(true);
-			powerMeter.GetComponent<Text>().text = "Power: " + power.ToString();
+			//powerMeter.GetComponent<Text>().text = "Power: " + power.ToString();
 
 		} else {
-			powerMeter.SetActive (false);
+			//powerMeter.SetActive (false);
             powerSprite.SetActive(false);
 		}
         if (power < 0)
