@@ -88,7 +88,11 @@ public class PiranhaPlantBehavior : MonoBehaviour
             piranhaPlantAnimator.SetBool("isAttacking", true);
             piranhaPlantAnimator.SetBool("isIdling", false);
             //Makes the plant to rotate to face the player whenthe player is in proximity to it
-            piranhaPlantHead.transform.rotation = Quaternion.LookRotation (transform.position- player.transform.position, Vector3.up);
+            Vector3 plantLookat = transform.position - player.transform.position;
+            plantLookat.y = 0;
+            
+
+            piranhaPlantHead.transform.rotation = Quaternion.LookRotation (plantLookat, Vector3.up);
 
 			//Quaternion dude = Quaternion.LookRotation (player.transform.position - transform.position, Vector3.up);
 			//Vector3 dudeV3 = dude.eulerAngles;
