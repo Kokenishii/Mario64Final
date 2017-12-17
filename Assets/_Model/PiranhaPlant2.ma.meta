@@ -1,72 +1,103 @@
 fileFormatVersion: 2
-guid: dcfdecbf4b205ae4e8eb8cf1ebeff458
-timeCreated: 1513153769
+guid: 04495a4edcbb8734da869df0177a4901
+timeCreated: 1513535777
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: cluster1Handle
-    100002: joint10
-    100004: joint11
-    100006: joint12
-    100008: joint7
-    100010: joint8
-    100012: joint9
-    100014: locator1
-    100016: pCube2
-    100018: pCylinder2
-    100020: pCylinder3
-    100022: pPlane3
-    100024: pPlane4
-    100026: pSphere2
-    100028: //RootNode
-    100030: pCube3
-    100032: transform1
-    100034: transform2
-    100036: transform3
-    100038: joint13
-    100040: joint14
-    100042: joint15
-    100044: joint16
-    400000: cluster1Handle
-    400002: joint10
-    400004: joint11
-    400006: joint12
-    400008: joint7
-    400010: joint8
-    400012: joint9
-    400014: locator1
-    400016: pCube2
-    400018: pCylinder2
-    400020: pCylinder3
-    400022: pPlane3
-    400024: pPlane4
-    400026: pSphere2
-    400028: //RootNode
-    400030: pCube3
-    400032: transform1
-    400034: transform2
-    400036: transform3
-    400038: joint13
-    400040: joint14
-    400042: joint15
-    400044: joint16
-    4300000: pCube2
-    4300002: pSphere2
-    4300004: pCylinder2
-    4300006: pPlane3
-    4300008: pPlane4
-    4300010: pCylinder3
-    7400000: Whomp_Falling
-    7400002: Whomp_Rising
-    7400004: Whomp_Patrolling
+    100000: group1
+    100002: joint1
+    100004: joint2
+    100006: joint3
+    100008: joint4
+    100010: joint5
+    100012: joint6
+    100014: joint7
+    100016: joint8
+    100018: pCone1
+    100020: pCone10
+    100022: pCone11
+    100024: pCone12
+    100026: pCone13
+    100028: pCone2
+    100030: pCone3
+    100032: pCone4
+    100034: pCone5
+    100036: pCone6
+    100038: pCone7
+    100040: pCone8
+    100042: pCone9
+    100044: pCylinder1
+    100046: pCylinder2
+    100048: //RootNode
+    100050: pSphere1
+    100052: pTorus1
+    100054: pTorus2
+    400000: group1
+    400002: joint1
+    400004: joint2
+    400006: joint3
+    400008: joint4
+    400010: joint5
+    400012: joint6
+    400014: joint7
+    400016: joint8
+    400018: pCone1
+    400020: pCone10
+    400022: pCone11
+    400024: pCone12
+    400026: pCone13
+    400028: pCone2
+    400030: pCone3
+    400032: pCone4
+    400034: pCone5
+    400036: pCone6
+    400038: pCone7
+    400040: pCone8
+    400042: pCone9
+    400044: pCylinder1
+    400046: pCylinder2
+    400048: //RootNode
+    400050: pSphere1
+    400052: pTorus1
+    400054: pTorus2
+    4300000: pSphere1
+    4300002: pCylinder1
+    4300004: pTorus2
+    4300006: pCone7
+    4300008: pCone6
+    4300010: pCone5
+    4300012: pCone4
+    4300014: pCone3
+    4300016: pCone2
+    4300018: pCone1
+    4300020: pTorus1
+    4300022: pCone8
+    4300024: pCone13
+    4300026: pCone12
+    4300028: pCone11
+    4300030: pCone10
+    4300032: pCone9
+    7400000: PiranhaIdle2
+    7400002: PiranhaEatt2
     9500000: //RootNode
-    13700000: pCube2
-    13700002: pCylinder2
-    13700004: pCylinder3
-    13700006: pPlane3
-    13700008: pPlane4
-    13700010: pSphere2
+    13700000: pCone1
+    13700002: pCone10
+    13700004: pCone11
+    13700006: pCone12
+    13700008: pCone13
+    13700010: pCone2
+    13700012: pCone3
+    13700014: pCone4
+    13700016: pCone5
+    13700018: pCone6
+    13700020: pCone7
+    13700022: pCone8
+    13700024: pCone9
+    13700026: pCylinder1
+    13700028: pSphere1
+    13700030: pTorus1
+    13700032: pTorus2
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -100,10 +131,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Whomp_Falling
+      name: PiranhaIdle2
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 50
+      lastFrame: 4
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -126,19 +157,19 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Whomp_Rising
+      name: PiranhaEatt2
       takeName: Take 001
-      firstFrame: 51
-      lastFrame: 101
+      firstFrame: 70
+      lastFrame: 109
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -154,39 +185,11 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
-    - serializedVersion: 16
-      name: Whomp_Patrolling
-      takeName: Take 001
-      firstFrame: 101
-      lastFrame: 101
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.15
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -222,7 +225,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    rootMotionBoneName: 
+    rootMotionBoneName: joint1
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
