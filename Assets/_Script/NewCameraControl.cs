@@ -39,5 +39,11 @@ public class NewCameraControl : MonoBehaviour {
                 Camera.main.fieldOfView+=2;
             }
         }
+        if (DeathBox.resetting)
+        {
+           // transform.eulerAngles.Set(90f,transform.rotation.y, transform.rotation.z);
+            transform.rotation = Quaternion.Euler(90,transform.rotation.y,transform.rotation.z);
+        }
+       
 	}
 }
