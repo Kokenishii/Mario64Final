@@ -1,57 +1,72 @@
 fileFormatVersion: 2
-guid: b87b23508fa7d3545aa0caab861cd5b5
-timeCreated: 1511995816
+guid: dcfdecbf4b205ae4e8eb8cf1ebeff458
+timeCreated: 1513153769
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: joint10
-    100002: joint11
-    100004: joint12
-    100006: joint7
-    100008: joint8
-    100010: joint9
-    100012: locator1
-    100014: pCube2
-    100016: pCylinder2
-    100018: pCylinder3
-    100020: pPlane3
-    100022: pPlane4
-    100024: pSphere2
-    100026: //RootNode
-    400000: joint10
-    400002: joint11
-    400004: joint12
-    400006: joint7
-    400008: joint8
-    400010: joint9
-    400012: locator1
-    400014: pCube2
-    400016: pCylinder2
-    400018: pCylinder3
-    400020: pPlane3
-    400022: pPlane4
-    400024: pSphere2
-    400026: //RootNode
-    2300000: pPlane3
-    2300002: pPlane4
-    3300000: pPlane3
-    3300002: pPlane4
+    100000: cluster1Handle
+    100002: joint10
+    100004: joint11
+    100006: joint12
+    100008: joint7
+    100010: joint8
+    100012: joint9
+    100014: locator1
+    100016: pCube2
+    100018: pCylinder2
+    100020: pCylinder3
+    100022: pPlane3
+    100024: pPlane4
+    100026: pSphere2
+    100028: //RootNode
+    100030: pCube3
+    100032: transform1
+    100034: transform2
+    100036: transform3
+    100038: joint13
+    100040: joint14
+    100042: joint15
+    100044: joint16
+    400000: cluster1Handle
+    400002: joint10
+    400004: joint11
+    400006: joint12
+    400008: joint7
+    400010: joint8
+    400012: joint9
+    400014: locator1
+    400016: pCube2
+    400018: pCylinder2
+    400020: pCylinder3
+    400022: pPlane3
+    400024: pPlane4
+    400026: pSphere2
+    400028: //RootNode
+    400030: pCube3
+    400032: transform1
+    400034: transform2
+    400036: transform3
+    400038: joint13
+    400040: joint14
+    400042: joint15
+    400044: joint16
     4300000: pCube2
     4300002: pSphere2
     4300004: pCylinder2
     4300006: pPlane3
     4300008: pPlane4
     4300010: pCylinder3
-    7400000: WhompFalling
-    7400002: WhompWalking
-    7400004: WhompRising
-    7400006: WhompFell
+    7400000: Whomp_Falling
+    7400002: Whomp_Rising
+    7400004: Whomp_Patrolling
     9500000: //RootNode
     13700000: pCube2
     13700002: pCylinder2
     13700004: pCylinder3
-    13700006: pSphere2
+    13700006: pPlane3
+    13700008: pPlane4
+    13700010: pSphere2
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -85,7 +100,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: WhompFalling
+      name: Whomp_Falling
       takeName: Take 001
       firstFrame: 1
       lastFrame: 50
@@ -113,9 +128,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: WhompWalking
+      name: Whomp_Rising
       takeName: Take 001
-      firstFrame: 101
+      firstFrame: 51
       lastFrame: 101
       wrapMode: 0
       orientationOffsetY: 0
@@ -141,38 +156,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: WhompRising
+      name: Whomp_Patrolling
       takeName: Take 001
-      firstFrame: 50
-      lastFrame: 101
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
-    - serializedVersion: 16
-      name: WhompFell
-      takeName: Take 001
-      firstFrame: 50
-      lastFrame: 50
+      firstFrame: 1
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
