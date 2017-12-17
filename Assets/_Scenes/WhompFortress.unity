@@ -2672,11 +2672,11 @@ Prefab:
       objectReference: {fileID: 1130340263}
     - target: {fileID: 1244058912986138, guid: ef52210fc0c45489091e232cea7b31cb, type: 2}
       propertyPath: m_TagString
-      value: MainCamera
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1364715247986554, guid: ef52210fc0c45489091e232cea7b31cb, type: 2}
       propertyPath: m_TagString
-      value: MainCamera
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 114241734677316402, guid: ef52210fc0c45489091e232cea7b31cb,
         type: 2}

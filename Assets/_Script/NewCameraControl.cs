@@ -5,7 +5,6 @@ using UnityEngine;
 public class NewCameraControl : MonoBehaviour {
    float mouseSensitivity = 125f;
     public GameObject mario;
-    public Quaternion lookDown = new Quaternion(-90f,0f,0f,0f);
     //public GameObject zoomOut;
     //float scrollSensitivity = 100f;
 
