@@ -158,8 +158,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Whomp_Patrolling
       takeName: Take 001
-      firstFrame: 1
-      lastFrame: 1
+      firstFrame: 101
+      lastFrame: 101
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
