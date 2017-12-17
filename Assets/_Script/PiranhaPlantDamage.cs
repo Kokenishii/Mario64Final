@@ -11,6 +11,10 @@ public class PiranhaPlantDamage : MonoBehaviour
 	//Checks to see if the player has taken damage from the Piranha Plant
 	bool doneDamage;
 
+    //The distance from the "object anchor" of the plant to the top of the plant; used to determine
+    //if the player is jumping on the it
+    public float testPlantHeight;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -31,9 +35,9 @@ public class PiranhaPlantDamage : MonoBehaviour
 		if (col.gameObject.tag == "Player") {
 
 			//Destroys the Piranha Plant if the player lands on it from above
-			if (col.gameObject.transform.position.y > this.transform.position.y) {
+			if (col.gameObject.transform.position.y  > this.transform.position.y + testPlantHeight) {
 
-				GameObject.Destroy (this.gameObject);
+				GameObject.Destroy (this.gameObject.transform.parent.gameObject);
 			
 			//If the player didn't hit the plant from above, then the player is going to 
 			//take damage from the plant

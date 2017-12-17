@@ -9,20 +9,108 @@ ModelImporter:
     100002: pCylinder2
     100004: //RootNode
     100006: pSphere1
+    100008: pTorus1
+    100010: pTorus2
+    100012: bottom
+    100014: group1
+    100016: joint1
+    100018: joint2
+    100020: joint3
+    100022: joint4
+    100024: joint5
+    100026: joint6
+    100028: joint7
+    100030: joint8
+    100032: pCone1
+    100034: pCone10
+    100036: pCone11
+    100038: pCone12
+    100040: pCone13
+    100042: pCone2
+    100044: pCone3
+    100046: pCone4
+    100048: pCone5
+    100050: pCone6
+    100052: pCone7
+    100054: pCone8
+    100056: pCone9
     400000: pCylinder1
     400002: pCylinder2
     400004: //RootNode
     400006: pSphere1
+    400008: pTorus1
+    400010: pTorus2
+    400012: bottom
+    400014: group1
+    400016: joint1
+    400018: joint2
+    400020: joint3
+    400022: joint4
+    400024: joint5
+    400026: joint6
+    400028: joint7
+    400030: joint8
+    400032: pCone1
+    400034: pCone10
+    400036: pCone11
+    400038: pCone12
+    400040: pCone13
+    400042: pCone2
+    400044: pCone3
+    400046: pCone4
+    400048: pCone5
+    400050: pCone6
+    400052: pCone7
+    400054: pCone8
+    400056: pCone9
+    2000000: bottom
     2300000: pCylinder1
     2300002: pCylinder2
     2300004: pSphere1
+    2300006: pTorus1
+    2300008: pTorus2
     3300000: pCylinder1
     3300002: pCylinder2
     3300004: pSphere1
+    3300006: pTorus1
+    3300008: pTorus2
     4300000: pCylinder1
     4300002: pCylinder2
     4300004: pSphere1
+    4300006: pTorus1
+    4300008: pTorus2
+    4300010: pCone7
+    4300012: pCone6
+    4300014: pCone5
+    4300016: pCone4
+    4300018: pCone3
+    4300020: pCone2
+    4300022: pCone1
+    4300024: pCone8
+    4300026: pCone13
+    4300028: pCone12
+    4300030: pCone11
+    4300032: pCone10
+    4300034: pCone9
+    7400000: Take 001
     9500000: //RootNode
+    13700000: pCone1
+    13700002: pCone10
+    13700004: pCone11
+    13700006: pCone12
+    13700008: pCone13
+    13700010: pCone2
+    13700012: pCone3
+    13700014: pCone4
+    13700016: pCone5
+    13700018: pCone6
+    13700020: pCone7
+    13700022: pCone8
+    13700024: pCone9
+    13700026: pCylinder1
+    13700028: pSphere1
+    13700030: pTorus1
+    13700032: pTorus2
   externalObjects:
   - first:
       type: UnityEngine:Material

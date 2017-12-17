@@ -22,10 +22,10 @@ public class PlayerHealthAndPickups : MonoBehaviour {
     public GameObject powerSprite;
 	public ParticleSystem coinParticles;
 	public ParticleSystem starParticles;
-
-	//Creates a Singleton, something that other pieces of code can reference 
-	//to change values in this script
-	public static PlayerHealthAndPickups Instance;
+    public AudioSource collectingSound;
+    //Creates a Singleton, something that other pieces of code can reference 
+    //to change values in this script
+    public static PlayerHealthAndPickups Instance;
 
 	// Use this for initialization
 	void Start () {
@@ -112,8 +112,10 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 				power++;
 			}
 
-			Debug.Log ("Power: " + power);
 
+
+			Debug.Log ("Power: " + power);
+            collectingSound.Play();
 			Destroy (col.gameObject);
 
 			ParticleSystem cp = Instantiate (coinParticles, col.transform.position, Quaternion.identity);
