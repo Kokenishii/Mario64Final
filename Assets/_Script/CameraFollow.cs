@@ -15,6 +15,14 @@ public class CameraFollow : MonoBehaviour {
 	// Update is called once per frame
 	void LateUpdate () {
         //Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
-        transform.position = mario.transform.position;
+        if (DeathBox.resetting == false)
+        {
+            transform.position = mario.transform.position;
+        }
 	}
+//    public void LookDown()
+//    {
+//        transform.position = transform.position;
+//    }
+
 }
