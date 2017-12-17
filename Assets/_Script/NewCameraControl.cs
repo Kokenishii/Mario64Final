@@ -5,6 +5,7 @@ using UnityEngine;
 public class NewCameraControl : MonoBehaviour {
    float mouseSensitivity = 125f;
     public GameObject mario;
+    public Quaternion lookDown = new Quaternion(-90f,0f,0f,0f);
     //public GameObject zoomOut;
     //float scrollSensitivity = 100f;
 
@@ -39,5 +40,11 @@ public class NewCameraControl : MonoBehaviour {
                 Camera.main.fieldOfView+=2;
             }
         }
+        if (DeathBox.resetting)
+        {
+           // transform.eulerAngles.Set(90f,transform.rotation.y, transform.rotation.z);
+            transform.rotation = Quaternion.Euler(90,transform.rotation.y,transform.rotation.z);
+        }
+       
 	}
 }

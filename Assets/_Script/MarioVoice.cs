@@ -32,6 +32,7 @@ public class MarioVoice : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
+    //random voice clips called when he jumps
 	void Update () {
         if ((marioAnimator.GetBool("isJumping") || marioAnimator.GetBool("isDiving")) && numSoundPlayed < 1)
         {
@@ -64,6 +65,7 @@ public class MarioVoice : MonoBehaviour {
                 numSoundPlayed++;
                 }
         }
+        //specific voice clip for certain actions
         if((marioAnimator.GetBool("isGroundPounding")) && numSoundPlayed1 <1)
             {
                 marioWah.Play();
@@ -104,6 +106,7 @@ public class MarioVoice : MonoBehaviour {
                 numSoundPlayed4++;
                     }
             }
+        //if no action is happening number of sounds is reset 
         if ((marioAnimator.GetBool("isJumping") || marioAnimator.GetBool("isDiving")) == false)
         {
             numSoundPlayed = 0;
