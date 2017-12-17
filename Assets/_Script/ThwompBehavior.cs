@@ -7,6 +7,10 @@ using UnityEngine;
 public class ThwompBehavior : MonoBehaviour
 {
 
+	AudioSource sounds;
+	public AudioClip grunt;
+	public AudioClip boom;
+
 	//The character controller used to regulate the Thwomp's movement
 	CharacterController thwompCharacterController;
 
@@ -45,6 +49,8 @@ public class ThwompBehavior : MonoBehaviour
 
 	void Start ()
 	{
+		sounds = GetComponent<AudioSource> ();
+
 		thwompCharacterController = this.GetComponent<CharacterController> ();
 
 		//Records the Thwomp's start position
@@ -145,6 +151,9 @@ public class ThwompBehavior : MonoBehaviour
 
 		//Checks to see if the Thwomp is in the same position as it was a frame ago
 		if (currentPos == this.transform.position) {
+
+			sounds.PlayOneShot (boom, 0.5f);
+			sounds.PlayOneShot (grunt, 1f);
 
 			//Tells the Thwomp to stop moving and to prepare to rise again
 			currentState = ThwompState.waitingToRise;
