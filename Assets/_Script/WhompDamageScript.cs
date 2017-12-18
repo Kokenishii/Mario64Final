@@ -33,12 +33,13 @@ public class WhompDamageScript : MonoBehaviour
 			if (myWhompBehavior.currentState == WhompBehavior.WhompState.falling
 			    || myWhompBehavior.currentState == WhompBehavior.WhompState.fell) {
 
+				//Makes sure the Whomp is above the player, and can only do damage when landing on the player from above
 				if (col.transform.position.y <= this.transform.position.y) {
 
 				//Checks if the player has already recieved damage from this Whomp during this trigger
 				if (doneDamage == false) {
 
-					//Allows the Thwomp to pass through the player, rather than causing them to be pushed into the ground,
+					//Allows the Whomp to pass through the player, rather than causing them to be pushed into the ground,
 					//by changing the collider into a trigger
 					this.GetComponent<BoxCollider> ().isTrigger = true;
 
