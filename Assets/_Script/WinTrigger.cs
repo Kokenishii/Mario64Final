@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class WinTrigger : MonoBehaviour {
     public bool finishAnimation = false;
+
+	public bool startAnimation = false;
+
 	// Use this for initialization
 	void Start () {
 		

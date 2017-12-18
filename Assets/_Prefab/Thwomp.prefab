@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33191347473527826}
   - component: {fileID: 65497036371389820}
   - component: {fileID: 23537507591942322}
-  - component: {fileID: 114792706641721610}
+  - component: {fileID: 114950734739620394}
   m_Layer: 0
   m_Name: Damage Source
   m_TagString: Untagged
@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 143894354378633902}
   - component: {fileID: 54872030356645048}
   - component: {fileID: 82620011924827816}
+  - component: {fileID: 114913720740724078}
   m_Layer: 0
   m_Name: Thwomp
   m_TagString: Thwomp
@@ -105,7 +106,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1083403190953044}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.279, z: 0}
+  m_LocalPosition: {x: 0, y: -0.402, z: 0}
   m_LocalScale: {x: 0.88814175, y: 0.444071, z: 0.888142}
   m_Children: []
   m_Father: {fileID: 4531623438164432}
@@ -268,7 +269,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1329046931147332}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -388,7 +389,25 @@ MonoBehaviour:
   secondsToRise: 1.2
   dropSpeed: 15
   risingSpeed: 6
---- !u!114 &114792706641721610
+--- !u!114 &114913720740724078
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1329046931147332}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ae4a4ad1503e9c4e9df6fb9479469a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grunt: {fileID: 8300000, guid: bb0ffbbe3ea784810812348b5120bdba, type: 3}
+  boom: {fileID: 8300000, guid: 9fa6589faf8a0ab4894148ab2a7622b1, type: 3}
+  currentState: 0
+  secondsToDrop: 1
+  secondsToRise: 1.2
+  dropSpeed: 15
+  risingSpeed: 6
+--- !u!114 &114950734739620394
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -396,9 +415,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1083403190953044}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09d54dfa8112c8c428b9f635890f28ba, type: 3}
+  m_Script: {fileID: 11500000, guid: e9ce2432aa6a1f1428529c673e74ae75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doneDamage: 0
 --- !u!143 &143894354378633902
 CharacterController:
   m_ObjectHideFlags: 1
