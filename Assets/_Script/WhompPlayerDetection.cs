@@ -8,9 +8,13 @@ using UnityEngine;
 //whether or not the Whomp sees the player
 public class WhompPlayerDetection : MonoBehaviour {
 
+	//The WhompBehavior script attached to this particular Whomp
+	public WhompBehavior myWhompBehavior;
+
 	// Use this for initialization
 	void Start () {
 		
+		myWhompBehavior = GetComponentInParent<WhompBehavior>();
 	}
 	
 	// Update is called once per frame
@@ -26,10 +30,10 @@ public class WhompPlayerDetection : MonoBehaviour {
 		//Makes sure that it is the player that this object has collided with, 
 		//and that the Whomp was in patrolling mode
 		if (col.gameObject.tag == "Player"
-			&& WhompBehavior.instance.currentState == WhompBehavior.WhompState.patrolling) {
+			&& myWhompBehavior.currentState == WhompBehavior.WhompState.patrolling) {
 
-			WhompBehavior.instance.playerDetected = true;
-			WhompBehavior.instance.currentState = WhompBehavior.WhompState.chasing;
+			myWhompBehavior.playerDetected = true;
+			myWhompBehavior.currentState = WhompBehavior.WhompState.chasing;
 		}
 	}
 
@@ -40,7 +44,7 @@ public class WhompPlayerDetection : MonoBehaviour {
 
 		//Makes sure that it is the player that this object has collided with
 		if (col.gameObject.tag == "Player") {
-			WhompBehavior.instance.playerDetected = false;
+			myWhompBehavior.playerDetected = false;
 		}
 	}
 }

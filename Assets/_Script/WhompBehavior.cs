@@ -88,8 +88,8 @@ public class WhompBehavior : MonoBehaviour
 	//The number of seconds before the Whomp rises back up after falling
 	public float timeToRiseAgain;
 
-	//The animator used to govern the Whomp's animations
-	Animator myAnimator;
+	//The animator used to govern the Whomp's animations; attached to the Whomp model that is a child of this gameObject
+	public Animator myAnimator;
 
 	//A rough estiamtion of how long it takes the Whomp to touch the ground After it starts falling,
 	//used to determine when to play the sound that the Whomp makes when it falls
@@ -125,13 +125,7 @@ public class WhompBehavior : MonoBehaviour
 
 		isMoving = true;
 
-		//Grabs the first child of the Whomp (the only child of the Whomp is the Whomp Vision Box)
-		//and links it to the variable whompVisionBox
-		//whompVisionBox = this.gameObject.transform.GetChild (0);
-
 		timer = 0f;
-
-		myAnimator = GetComponent<Animator> ();
 
 		myAudioSource = GetComponent<AudioSource> ();
 	}

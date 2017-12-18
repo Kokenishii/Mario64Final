@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: dcfdecbf4b205ae4e8eb8cf1ebeff458
-timeCreated: 1513552726
+guid: 3fbb7eba292a6054a8933cec9fc02770
+timeCreated: 1513566159
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -20,14 +20,6 @@ ModelImporter:
     100024: pPlane4
     100026: pSphere2
     100028: //RootNode
-    100030: pCube3
-    100032: transform1
-    100034: transform2
-    100036: transform3
-    100038: joint13
-    100040: joint14
-    100042: joint15
-    100044: joint16
     400000: cluster1Handle
     400002: joint10
     400004: joint11
@@ -43,14 +35,6 @@ ModelImporter:
     400024: pPlane4
     400026: pSphere2
     400028: //RootNode
-    400030: pCube3
-    400032: transform1
-    400034: transform2
-    400036: transform3
-    400038: joint13
-    400040: joint14
-    400042: joint15
-    400044: joint16
     4300000: pCube2
     4300002: pSphere2
     4300004: pCylinder2
@@ -59,7 +43,7 @@ ModelImporter:
     4300010: pCylinder3
     7400000: Whomp_Falling
     7400002: Whomp_Rising
-    7400004: Whomp_Patrolling
+    7400004: Whomp_Walking
     9500000: //RootNode
     13700000: pCube2
     13700002: pCylinder2
@@ -156,7 +140,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Whomp_Patrolling
+      name: Whomp_Walking
       takeName: Take 001
       firstFrame: 101
       lastFrame: 101
