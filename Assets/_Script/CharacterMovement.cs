@@ -361,7 +361,7 @@ public class CharacterMovement : MonoBehaviour
     void Landing() //CALLED ONCE PER LANDING
     {
         //WRITE YOUR CODES HERE
-      //  print("landed!");
+        print("landed!");
 
         isLanded = true;
         
