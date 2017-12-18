@@ -133,10 +133,10 @@ public class CharacterMovement : MonoBehaviour
                 additionalMove = Vector3.zero;
             }
          
-            crouchSpeed = 1;
+            
             if (Mathf.Abs(horizontal) >= 0.9 || Mathf.Abs(vertical) >= 0.9)
             {
-                if (Input.GetButtonDown("Punch") && !isSlidingDown && canJump )
+                if (Input.GetButtonDown("Punch") &&Input.GetButton("Crouch")==false&& !isSlidingDown && canJump )
                 {
                     canJump = false;
                     //StartCoroutine(adjustJump());
@@ -175,10 +175,11 @@ public class CharacterMovement : MonoBehaviour
                  
              
                 // print("crouching");
-                if (Input.GetButtonDown("Punch"))
+                if (Input.GetButtonDown("Punch")&&canJump&&!isSlidingDown)
                 {
                     jumpSpeed = jumpForce * 0.4f;
-                    
+                    canJump = false;
+                    StartCoroutine(SlidingKickEnd());
                     print("sliding kicik");
                 }
               // StartCoroutine(crouchEnd());
@@ -212,7 +213,8 @@ public class CharacterMovement : MonoBehaviour
 						sound.Stop ();
                         marioAnimator.SetBool("isLongJumping", true);
                         print("long jump");
-
+                        canJump = false;
+                        StartCoroutine(LongJumpEnd());
 						ParticleSystem p = Instantiate(jumpDust, new Vector3(transform.position.x, transform.position.y-1, transform.position.z), Quaternion.identity);
 						Destroy (p.gameObject, 0.5f);
                     }
@@ -322,16 +324,31 @@ public class CharacterMovement : MonoBehaviour
         marioAnimator.SetBool("isDiving", false);
         StartCoroutine(adjustJump());
     }
+    IEnumerator SlidingKickEnd()
+    {
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(adjustJump());
+    }
 
     IEnumerator startSliding()
     {
         yield return new WaitForSeconds(0.1f);
         isSlidingDown = false;
     }
+    IEnumerator LongJumpEnd()
+    {
+        yield return new WaitForSeconds(0.5f);
+        canJump = true;
+    }
     IEnumerator adjustJump()
     {
         yield return new WaitForSeconds(0.2f);
         canJump = true;
+    }
+    IEnumerator Crouch()
+    {
+        yield return new WaitForSeconds(1f);
+        crouchSpeed = 0;
     }
 
     void OnTriggerEnter(Collider col)
@@ -361,8 +378,8 @@ public class CharacterMovement : MonoBehaviour
     void Landing() //CALLED ONCE PER LANDING
     {
         //WRITE YOUR CODES HERE
-      //  print("landed!");
-
+        print("landed!");
+        crouchSpeed = 1;
         isLanded = true;
 		sound.PlayOneShot(landingSound, .2f);
 		ParticleSystem p = Instantiate(jumpDust, new Vector3(transform.position.x, transform.position.y-1, transform.position.z), Quaternion.Euler(-90f, 0f, 0f)); //When landing, create a dust cloud.
