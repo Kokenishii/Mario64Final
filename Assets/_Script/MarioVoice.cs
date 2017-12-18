@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MarioVoice : MonoBehaviour {
+    //works out what voice clips mario says when he does stuff in the animator.
     public Animator marioAnimator;
     public AudioSource marioWah;
     public AudioSource marioYah;
