@@ -12,6 +12,7 @@ public class CameraFollow : MonoBehaviour {
 		
 	}
 	
+    //have this object follow mario
 	// Update is called once per frame
 	void LateUpdate () {
         //Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
