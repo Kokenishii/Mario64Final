@@ -101,8 +101,8 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 
 			ParticleSystem sp = Instantiate (starParticles, col.transform.position, Quaternion.identity);
 			Destroy (sp, 1f);
-
-			Debug.Log ("You win!");
+            collectingSound.Play();
+            Debug.Log ("You win!");
 		}
 
 		//Checks to see if the player has collected a regular coin
@@ -135,8 +135,8 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 			}
 
 			redCoinCount++;
-
-			Debug.Log("Red Coins Collected: " + redCoinCount);
+            collectingSound.Play();
+            Debug.Log("Red Coins Collected: " + redCoinCount);
 
 			Destroy (col.gameObject);
 
