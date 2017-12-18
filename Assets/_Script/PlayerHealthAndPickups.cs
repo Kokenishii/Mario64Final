@@ -27,6 +27,11 @@ public class PlayerHealthAndPickups : MonoBehaviour {
     //to change values in this script
     public static PlayerHealthAndPickups Instance;
 
+
+	public Animator deathWipe;
+
+	public static bool deadFromEnemies = false;
+
 	// Use this for initialization
 	void Start () {
 
@@ -79,8 +84,12 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 			Debug.Log ("You died!");
             MarioVoice.numSoundPlayed4 = 0;
 
+			DeathBox.resetting = true;
+			deathWipe.SetBool ("gotDead", true);
+			deadFromEnemies = true;
+
 			//Reloads the level (the current number of lives will carry over)
-			SceneManager.LoadScene (0);
+			//SceneManager.LoadScene (0);
 		}
 
 		//Checks to see if the player has lost all their lives
