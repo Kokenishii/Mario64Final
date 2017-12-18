@@ -13,7 +13,7 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 	public int stars;
 	public int coinScore;
 	public int redCoinCount;
-
+    public Animator winWipe;
 	public GameObject starCountText;
 	public GameObject coinCountText;
 	public GameObject livesCountText;
@@ -96,6 +96,8 @@ public class PlayerHealthAndPickups : MonoBehaviour {
 		if (col.gameObject.tag == "Star") {
 			stars++;
 			Destroy (col.gameObject);
+            winWipe.SetBool("gotStar", true);
+
 
 			ParticleSystem sp = Instantiate (starParticles, col.transform.position, Quaternion.identity);
 			Destroy (sp, 1f);
