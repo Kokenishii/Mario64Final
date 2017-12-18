@@ -24,6 +24,11 @@ public class NewCameraControl : MonoBehaviour {
             Cursor.lockState = CursorLockMode.Locked;
 
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
         //Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
