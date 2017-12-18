@@ -14,6 +14,7 @@ public class CharacterMovement : MonoBehaviour
 
     public ParticleSystem jumpDust;
     public AudioClip footstep;
+	public AudioClip landingSound;
     AudioSource sound;
 
     bool isSlidingDown;    
@@ -94,8 +95,9 @@ public class CharacterMovement : MonoBehaviour
         {
             //[[[[[[WALKING]]]]]// CALLED when WALKING
 
-			if (!sound.isPlaying && (movement.x != 0 || movement.z != 0)) { //Plays a footstep sound as long as he's
+			if (!sound.isPlaying && (movement.x != 0 || movement.z != 0) && !marioAnimator.GetBool("isCrouching")) { //Plays a footstep sound as long as he's
 				sound.clip = footstep;
+				sound.loop = true;
 				sound.Play ();
 			}
 
@@ -113,8 +115,6 @@ public class CharacterMovement : MonoBehaviour
             if (!isLanded)
             {
                 Landing();//MODIFY THE LANDING FUNCTION AT THE END
-				ParticleSystem p = Instantiate(jumpDust, new Vector3(transform.position.x, transform.position.y-1, transform.position.z), Quaternion.Euler(-90f, 0f, 0f)); //When landing, create a dust cloud.
-				Destroy(p.gameObject, 0.5f);
             }
 
 
@@ -167,7 +167,7 @@ public class CharacterMovement : MonoBehaviour
             //jumpSpeed -= gravity * Time.deltaTime;
             if (Input.GetButton("Crouch"))
             {
-				sound.Stop ();
+				sound.loop = false;
                 marioAnimator.SetBool("isCrouching", true);
 
                 // additionalMove = -transform.forward * backFlipSpeed * Time.deltaTime;
@@ -364,6 +364,9 @@ public class CharacterMovement : MonoBehaviour
       //  print("landed!");
 
         isLanded = true;
+		sound.PlayOneShot(landingSound, .2f);
+		ParticleSystem p = Instantiate(jumpDust, new Vector3(transform.position.x, transform.position.y-1, transform.position.z), Quaternion.Euler(-90f, 0f, 0f)); //When landing, create a dust cloud.
+		Destroy(p.gameObject, 0.5f);
         
       
     }
