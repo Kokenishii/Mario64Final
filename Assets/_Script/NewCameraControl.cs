@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NewCameraControl : MonoBehaviour {
-   float mouseSensitivity = 125f;
+   float mouseSensitivity = 75f;
     public GameObject mario;
     //public GameObject zoomOut;
     //float scrollSensitivity = 100f;
@@ -39,7 +39,8 @@ public class NewCameraControl : MonoBehaviour {
                 Camera.main.fieldOfView+=2;
             }
         }
-        if (DeathBox.resetting)
+        if (DeathBox.resetting
+			&& PlayerHealthAndPickups.deadFromEnemies == false)
         {
            // transform.eulerAngles.Set(90f,transform.rotation.y, transform.rotation.z);
             transform.rotation = Quaternion.Euler(90,transform.rotation.y,transform.rotation.z);
