@@ -446,7 +446,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1614672222005516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.7, y: 0.74, z: -20.72}
+  m_LocalPosition: {x: 80.58121, y: 30.993729, z: -109.61916}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4132439335329848}
@@ -707,8 +707,8 @@ MonoBehaviour:
   currentState: 0
   startingDirectionBoundary: {fileID: 0}
   secondDirectionBoundary: {fileID: 0}
-  patrolSpeed: 0.2
-  chaseSpeed: 0.4
+  patrolSpeed: 0.15
+  chaseSpeed: 0.3
   turnSpeed: 60
   player: {fileID: 0}
   playerDetected: 0

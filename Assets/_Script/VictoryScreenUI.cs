@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class VictoryScreenUI : MonoBehaviour {
     public GameObject winScreen;
     private WinTrigger myTrigger;
+	public AudioSource winSound;
+	int numSoundPlayed = 0;
 	// Use this for initialization
 	void Start () {
         winScreen.SetActive(false);
@@ -15,9 +17,17 @@ public class VictoryScreenUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (myTrigger.finishAnimation == true)
+      
+		if (numSoundPlayed < 1
+			&& myTrigger.startAnimation == true) {
+			winSound.Play ();
+			numSoundPlayed++;
+		}
+
+		if (myTrigger.finishAnimation == true)
         {
             winScreen.SetActive(true);
+
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0.0f;
@@ -25,6 +35,7 @@ public class VictoryScreenUI : MonoBehaviour {
                 {
                     Time.timeScale = 1.0f;
                     SceneManager.LoadScene (0);
+				numSoundPlayed = 0;
                 }
         }
 
