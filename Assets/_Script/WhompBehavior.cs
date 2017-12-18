@@ -171,6 +171,8 @@ public class WhompBehavior : MonoBehaviour
 			myAnimator.SetBool ("isRising", false);
 			myAnimator.SetBool ("isPatrolling", false);
 
+			myAnimator.StopPlayback ();
+
 			//Starts the Whomp's falling animation
 			myAnimator.SetBool ("isFalling", true);
 
