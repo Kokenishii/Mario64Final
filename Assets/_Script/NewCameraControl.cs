@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NewCameraControl : MonoBehaviour {
-   float mouseSensitivity = 75f;
+   float mouseSensitivity = 25f;
     public GameObject mario;
     //public GameObject zoomOut;
     //float scrollSensitivity = 100f;
