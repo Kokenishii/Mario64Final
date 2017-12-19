@@ -79,7 +79,7 @@ public class PlayerHealthAndPickups : MonoBehaviour {
         }
 		//Checks to see if the player has died
         if (power == 0) {
-			lives--;
+			
 			power = 8;
 			Debug.Log ("You died!");
             MarioVoice.numSoundPlayed4 = 0;

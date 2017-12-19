@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ScreenShake : MonoBehaviour {
+    //shakes the screen
     public static float shakeStrength = 0f; 
 	// Use this for initialization
 	void Start () {
